@@ -1,0 +1,517 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#lbtext {
+  font-weight: bold;
+  color: #fff;
+
+  font-size: 1.2em;
+}
+
+#editor {
+  color: #000;
+  padding-left: 1em;
+  /* Gradiente en el background */
+  background: #fff;  /* fallback for old browsers */
+
+
+}
+
+/* CSS PARA EL LOGIN
+============================================================
+*/
+.login-box {
+  position: absolute;
+  top: 250px;
+  left: 860px;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 20, 20, 0.987);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #bdb8b8;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #00bf8f;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #00bf8f,
+              0 0 25px #00bf8f,
+              0 0 50px #00bf8f,
+              0 0 100px #00bf8f;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(1) {
+  bottom: 2px;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00bf8f);
+  animation: btn-anim1 2s linear infinite;
+}
+
+/* CAJA DE REPORTE ============================================== */
+.reporte-box {
+  position: absolute;
+  top: 180px;
+  left: 720px;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 20, 20, 0.987);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.reporte-box .user-box {
+  position: relative;
+}
+
+.reporte-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.reporte-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.reporte-box .user-box input:focus ~ label,
+.reporte-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #bdb8b8;
+  font-size: 12px;
+}
+
+.reporte-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.reporte-box a:hover {
+  background: #fdffff;
+  color: #000000;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #eeeeee,
+              0 0 25px #ffffff,
+              0 0 50px #f7f7f7,
+              0 0 100px #ffffff;
+}
+
+.reporte-box a span {
+  position: absolute;
+  display: block;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.reporte-box a span:nth-child(1) {
+  bottom: 2px;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff);
+  animation: btn-anim1 2s linear infinite;
+}
+
+/* BOTON FILE */
+button#filebtn {
+  border: none;
+  display: flex;
+  padding: 0.75rem 1.5rem;
+  background: #00bf8f;  /* fallback for old browsers */
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  user-select: none;
+  gap: 0.75rem;
+  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+  transition: all .6s ease;
+}
+
+button#filebtn:hover {
+  box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+}
+
+button#filebtn:focus,button:active {
+  opacity: .85;
+  box-shadow: none;
+}
+
+button#filebtn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/*LOGIN BUTTON*/
+.login {
+  --color: #00A97F;
+  --color2: rgb(10, 25, 30);
+  padding: 0.6em 1.45em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .3px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+ }
+ 
+ .login::after, .login::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .login::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .login:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .login:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .login:hover {
+  color: var(--color2);
+ }
+ 
+ .login:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+
+ /* BOTON DE REPORTES */
+ .reportes {
+  --color: #ffffff;
+  --color2: rgb(10, 25, 30);
+  padding: 0.6em 1.45em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .3px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+ }
+ 
+ .reportes::after, .reportes::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .reportes::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .reportes:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .reportes:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .reportes:hover {
+  color: var(--color2);
+ }
+ 
+ .reportes:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+ /*fin boton reportes*/
+
+ /* EJECUTAR BUTTON*/
+
+ button.ejecutar {
+  width: 7.5em;
+  height: 2.5em;
+  background: white(0, 54, 24);
+  color: black;
+  border: none;
+  border-radius: 0.625em;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+ }
+ 
+ button.ejecutar:hover {
+  color: white;
+ }
+ 
+ button.ejecutar:after {
+  content: "";
+  background: #00bf8f;
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.5s;
+ }
+ 
+ button.ejecutar:hover:after {
+  transform: skewX(-45deg) scale(1, 1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+ }
+
+ /*RUTA TEXT*/
+ .input-wrapper input {
+  background-color: #eee;
+  border: none;
+  padding: 0.5rem;
+  font-size: 15px;
+  width: 40em;
+  border-radius: 0.5rem;
+  color: black;
+  cursor: pointer;
+}
+
+.input-wrapper input:focus {
+  outline-color: black;
+}
+
+/* boton clean*/
+
+
+.clean {
+  width: 50px;
+  height: 40px;
+  top: -5px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.clean:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.clean:hover .svgIcon {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(70%);
+}
+
+.clean::before {
+  position: absolute;
+  top: -20px;
+  content: "Delete";
+  color: white;
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.clean:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
+}
