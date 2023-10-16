@@ -1,0 +1,2929 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> command
+Rule 1     command -> execute_command
+Rule 2     command -> mkdisk_command
+Rule 3     command -> rmdisk_command
+Rule 4     command -> fdisk_command
+Rule 5     command -> mount_command
+Rule 6     command -> mkfs_command
+Rule 7     command -> login_command
+Rule 8     command -> logout_command
+Rule 9     command -> mkgrp_command
+Rule 10    command -> rmgrp_command
+Rule 11    command -> mkusr_command
+Rule 12    command -> rmusr_command
+Rule 13    command -> mkfile_command
+Rule 14    command -> mkdir_command
+Rule 15    command -> pause_command
+Rule 16    command -> rep_command
+Rule 17    mkdisk_command -> MKDISK opciones
+Rule 18    opciones -> opciones opciones_element
+Rule 19    opciones -> opciones_element
+Rule 20    opciones_element -> opcion_size
+Rule 21    opciones_element -> opcion_path
+Rule 22    opciones_element -> opcion_unit
+Rule 23    opciones_element -> opcion_fit
+Rule 24    opcion_size -> SIZE IGUAL NUMERO
+Rule 25    opcion_path -> PATH IGUAL RUTA ID
+Rule 26    opcion_path -> PATH IGUAL CADENA
+Rule 27    opcion_unit -> UNIT IGUAL ID
+Rule 28    opcion_fit -> FIT IGUAL ID
+Rule 29    execute_command -> EXECUTE PATH IGUAL RUTA ID
+Rule 30    execute_command -> EXECUTE PATH IGUAL CADENA
+Rule 31    rmdisk_command -> RMDISK PATH IGUAL RUTA ID
+Rule 32    rmdisk_command -> RMDISK PATH IGUAL CADENA
+Rule 33    fdisk_command -> FDISK opciones_fdisk
+Rule 34    opciones_fdisk -> opciones_fdisk opciones_element_fdisk
+Rule 35    opciones_fdisk -> opciones_element_fdisk
+Rule 36    opciones_element_fdisk -> opcionfdisk_size
+Rule 37    opciones_element_fdisk -> opcionfdisk_path
+Rule 38    opciones_element_fdisk -> opcionfdisk_name
+Rule 39    opciones_element_fdisk -> opcionfdisk_unit
+Rule 40    opciones_element_fdisk -> opcionfdisk_type
+Rule 41    opciones_element_fdisk -> opcionfdisk_fit
+Rule 42    opciones_element_fdisk -> opcionfdisk_delete
+Rule 43    opciones_element_fdisk -> opcionfdisk_add
+Rule 44    opcionfdisk_size -> SIZE IGUAL NUMERO
+Rule 45    opcionfdisk_path -> PATH IGUAL RUTA ID
+Rule 46    opcionfdisk_path -> PATH IGUAL CADENA
+Rule 47    opcionfdisk_name -> NAME IGUAL ID
+Rule 48    opcionfdisk_name -> NAME IGUAL CADENA
+Rule 49    opcionfdisk_unit -> UNIT IGUAL ID
+Rule 50    opcionfdisk_type -> TYPE IGUAL ID
+Rule 51    opcionfdisk_fit -> FIT IGUAL ID
+Rule 52    opcionfdisk_delete -> DELETE IGUAL ID
+Rule 53    opcionfdisk_add -> ADD IGUAL NUMERO
+Rule 54    opcionfdisk_add -> ADD IGUAL ID
+Rule 55    mount_command -> MOUNT opciones_mount
+Rule 56    opciones_mount -> opciones_mount opciones_element_mount
+Rule 57    opciones_mount -> opciones_element_mount
+Rule 58    opciones_element_mount -> opcionmount_path
+Rule 59    opciones_element_mount -> opcionmount_name
+Rule 60    opcionmount_path -> PATH IGUAL RUTA ID
+Rule 61    opcionmount_path -> PATH IGUAL CADENA
+Rule 62    opcionmount_name -> NAME IGUAL ID
+Rule 63    opcionmount_name -> NAME IGUAL CADENA
+Rule 64    mkfs_command -> MKFS opciones_mkfs
+Rule 65    opciones_mkfs -> opciones_mkfs opciones_element_mkfs
+Rule 66    opciones_mkfs -> opciones_element_mkfs
+Rule 67    opciones_element_mkfs -> opcionmkfs_id
+Rule 68    opciones_element_mkfs -> opcionmkfs_type
+Rule 69    opciones_element_mkfs -> opcionmkfs_fs
+Rule 70    opcionmkfs_id -> ID_CMD IGUAL NUMERO ID
+Rule 71    opcionmkfs_type -> TYPE IGUAL ID
+Rule 72    opcionmkfs_fs -> FS IGUAL NUMERO ID
+Rule 73    login_command -> LOGIN opciones_login
+Rule 74    opciones_login -> opciones_login opciones_element_login
+Rule 75    opciones_login -> opciones_element_login
+Rule 76    opciones_element_login -> opcionlogin_usr
+Rule 77    opciones_element_login -> opcionlogin_pwd
+Rule 78    opciones_element_login -> opcionlogin_id
+Rule 79    opcionlogin_usr -> USER IGUAL ID
+Rule 80    opcionlogin_usr -> USER IGUAL CADENA
+Rule 81    opcionlogin_pwd -> PASS IGUAL ID
+Rule 82    opcionlogin_pwd -> PASS IGUAL NUMERO
+Rule 83    opcionlogin_pwd -> PASS IGUAL CADENA
+Rule 84    opcionlogin_pwd -> PASS IGUAL NUMERO ID
+Rule 85    opcionlogin_id -> ID_CMD IGUAL NUMERO ID
+Rule 86    logout_command -> LOGOUT
+Rule 87    mkgrp_command -> MKGRP NAME IGUAL ID
+Rule 88    mkgrp_command -> MKGRP NAME IGUAL CADENA
+Rule 89    rmgrp_command -> RMGRP NAME IGUAL ID
+Rule 90    rmgrp_command -> RMGRP NAME IGUAL CADENA
+Rule 91    mkusr_command -> MKUSR opciones_mkusr
+Rule 92    opciones_mkusr -> opciones_mkusr opciones_element_mkusr
+Rule 93    opciones_mkusr -> opciones_element_mkusr
+Rule 94    opciones_element_mkusr -> opcionmkusr_usr
+Rule 95    opciones_element_mkusr -> opcionmkusr_pwd
+Rule 96    opciones_element_mkusr -> opcionmkusr_grp
+Rule 97    opcionmkusr_usr -> USER IGUAL ID
+Rule 98    opcionmkusr_usr -> USER IGUAL CADENA
+Rule 99    opcionmkusr_pwd -> PASS IGUAL ID
+Rule 100   opcionmkusr_pwd -> PASS IGUAL NUMERO
+Rule 101   opcionmkusr_pwd -> PASS IGUAL CADENA
+Rule 102   opcionmkusr_pwd -> PASS IGUAL NUMERO ID
+Rule 103   opcionmkusr_grp -> GRP IGUAL ID
+Rule 104   opcionmkusr_grp -> GRP IGUAL CADENA
+Rule 105   rmusr_command -> RMUSR USER IGUAL ID
+Rule 106   rmusr_command -> RMUSR USER IGUAL CADENA
+Rule 107   mkfile_command -> MKFILE opciones_mkfile
+Rule 108   opciones_mkfile -> opciones_mkfile opciones_element_mkfile
+Rule 109   opciones_mkfile -> opciones_element_mkfile
+Rule 110   opciones_element_mkfile -> opcionmkfile_path
+Rule 111   opciones_element_mkfile -> opcionmkfile_r
+Rule 112   opciones_element_mkfile -> opcionmkfile_size
+Rule 113   opciones_element_mkfile -> opcionmkfile_cont
+Rule 114   opcionmkfile_path -> PATH IGUAL RUTA ID
+Rule 115   opcionmkfile_path -> PATH IGUAL CADENA
+Rule 116   opcionmkfile_r -> R
+Rule 117   opcionmkfile_size -> SIZE IGUAL NUMERO
+Rule 118   opcionmkfile_cont -> CONT IGUAL CADENA
+Rule 119   opcionmkfile_cont -> CONT IGUAL RUTA ID
+Rule 120   mkdir_command -> MKDIR opciones_mkdir
+Rule 121   opciones_mkdir -> opciones_mkdir opciones_element_mkdir
+Rule 122   opciones_mkdir -> opciones_element_mkdir
+Rule 123   opciones_element_mkdir -> opcionmkdir_path
+Rule 124   opciones_element_mkdir -> opcionmkdir_r
+Rule 125   opcionmkdir_path -> PATH IGUAL RUTA
+Rule 126   opcionmkdir_path -> PATH IGUAL CADENA
+Rule 127   opcionmkdir_r -> R
+Rule 128   pause_command -> PAUSE
+Rule 129   rep_command -> REP opciones_rep
+Rule 130   opciones_rep -> opciones_rep opciones_element_rep
+Rule 131   opciones_rep -> opciones_element_rep
+Rule 132   opciones_element_rep -> opcionrep_id
+Rule 133   opciones_element_rep -> opcionrep_path
+Rule 134   opciones_element_rep -> opcionrep_name
+Rule 135   opciones_element_rep -> opcionrep_ruta
+Rule 136   opcionrep_id -> ID_CMD IGUAL NUMERO ID
+Rule 137   opcionrep_path -> PATH IGUAL RUTA ID
+Rule 138   opcionrep_path -> PATH IGUAL RUTA
+Rule 139   opcionrep_path -> PATH IGUAL CADENA
+Rule 140   opcionrep_name -> NAME IGUAL ID
+Rule 141   opcionrep_name -> NAME IGUAL CADENA
+Rule 142   opcionrep_ruta -> RUTAC IGUAL RUTA ID
+Rule 143   opcionrep_ruta -> RUTAC IGUAL RUTA
+Rule 144   opcionrep_ruta -> RUTAC IGUAL CADENA
+
+Terminals, with rules where they appear
+
+ADD                  : 53 54
+CADENA               : 26 30 32 46 48 61 63 80 83 88 90 98 101 104 106 115 118 126 139 141 144
+CONT                 : 118 119
+DELETE               : 52
+EXECUTE              : 29 30
+FDISK                : 33
+FIT                  : 28 51
+FS                   : 72
+GRP                  : 103 104
+ID                   : 25 27 28 29 31 45 47 49 50 51 52 54 60 62 70 71 72 79 81 84 85 87 89 97 99 102 103 105 114 119 136 137 140 142
+ID_CMD               : 70 85 136
+IGUAL                : 24 25 26 27 28 29 30 31 32 44 45 46 47 48 49 50 51 52 53 54 60 61 62 63 70 71 72 79 80 81 82 83 84 85 87 88 89 90 97 98 99 100 101 102 103 104 105 106 114 115 117 118 119 125 126 136 137 138 139 140 141 142 143 144
+LOGIN                : 73
+LOGOUT               : 86
+MKDIR                : 120
+MKDISK               : 17
+MKFILE               : 107
+MKFS                 : 64
+MKGRP                : 87 88
+MKUSR                : 91
+MOUNT                : 55
+NAME                 : 47 48 62 63 87 88 89 90 140 141
+NUMERO               : 24 44 53 70 72 82 84 85 100 102 117 136
+PASS                 : 81 82 83 84 99 100 101 102
+PATH                 : 25 26 29 30 31 32 45 46 60 61 114 115 125 126 137 138 139
+PAUSE                : 128
+R                    : 116 127
+REP                  : 129
+RMDISK               : 31 32
+RMGRP                : 89 90
+RMUSR                : 105 106
+RUTA                 : 25 29 31 45 60 114 119 125 137 138 142 143
+RUTAC                : 142 143 144
+SIZE                 : 24 44 117
+TYPE                 : 50 71
+UNIT                 : 27 49
+USER                 : 79 80 97 98 105 106
+error                : 
+
+Nonterminals, with rules where they appear
+
+command              : 0
+execute_command      : 1
+fdisk_command        : 4
+login_command        : 7
+logout_command       : 8
+mkdir_command        : 14
+mkdisk_command       : 2
+mkfile_command       : 13
+mkfs_command         : 6
+mkgrp_command        : 9
+mkusr_command        : 11
+mount_command        : 5
+opcion_fit           : 23
+opcion_path          : 21
+opcion_size          : 20
+opcion_unit          : 22
+opciones             : 17 18
+opciones_element     : 18 19
+opciones_element_fdisk : 34 35
+opciones_element_login : 74 75
+opciones_element_mkdir : 121 122
+opciones_element_mkfile : 108 109
+opciones_element_mkfs : 65 66
+opciones_element_mkusr : 92 93
+opciones_element_mount : 56 57
+opciones_element_rep : 130 131
+opciones_fdisk       : 33 34
+opciones_login       : 73 74
+opciones_mkdir       : 120 121
+opciones_mkfile      : 107 108
+opciones_mkfs        : 64 65
+opciones_mkusr       : 91 92
+opciones_mount       : 55 56
+opciones_rep         : 129 130
+opcionfdisk_add      : 43
+opcionfdisk_delete   : 42
+opcionfdisk_fit      : 41
+opcionfdisk_name     : 38
+opcionfdisk_path     : 37
+opcionfdisk_size     : 36
+opcionfdisk_type     : 40
+opcionfdisk_unit     : 39
+opcionlogin_id       : 78
+opcionlogin_pwd      : 77
+opcionlogin_usr      : 76
+opcionmkdir_path     : 123
+opcionmkdir_r        : 124
+opcionmkfile_cont    : 113
+opcionmkfile_path    : 110
+opcionmkfile_r       : 111
+opcionmkfile_size    : 112
+opcionmkfs_fs        : 69
+opcionmkfs_id        : 67
+opcionmkfs_type      : 68
+opcionmkusr_grp      : 96
+opcionmkusr_pwd      : 95
+opcionmkusr_usr      : 94
+opcionmount_name     : 59
+opcionmount_path     : 58
+opcionrep_id         : 132
+opcionrep_name       : 134
+opcionrep_path       : 133
+opcionrep_ruta       : 135
+pause_command        : 15
+rep_command          : 16
+rmdisk_command       : 3
+rmgrp_command        : 10
+rmusr_command        : 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . command
+    (1) command -> . execute_command
+    (2) command -> . mkdisk_command
+    (3) command -> . rmdisk_command
+    (4) command -> . fdisk_command
+    (5) command -> . mount_command
+    (6) command -> . mkfs_command
+    (7) command -> . login_command
+    (8) command -> . logout_command
+    (9) command -> . mkgrp_command
+    (10) command -> . rmgrp_command
+    (11) command -> . mkusr_command
+    (12) command -> . rmusr_command
+    (13) command -> . mkfile_command
+    (14) command -> . mkdir_command
+    (15) command -> . pause_command
+    (16) command -> . rep_command
+    (29) execute_command -> . EXECUTE PATH IGUAL RUTA ID
+    (30) execute_command -> . EXECUTE PATH IGUAL CADENA
+    (17) mkdisk_command -> . MKDISK opciones
+    (31) rmdisk_command -> . RMDISK PATH IGUAL RUTA ID
+    (32) rmdisk_command -> . RMDISK PATH IGUAL CADENA
+    (33) fdisk_command -> . FDISK opciones_fdisk
+    (55) mount_command -> . MOUNT opciones_mount
+    (64) mkfs_command -> . MKFS opciones_mkfs
+    (73) login_command -> . LOGIN opciones_login
+    (86) logout_command -> . LOGOUT
+    (87) mkgrp_command -> . MKGRP NAME IGUAL ID
+    (88) mkgrp_command -> . MKGRP NAME IGUAL CADENA
+    (89) rmgrp_command -> . RMGRP NAME IGUAL ID
+    (90) rmgrp_command -> . RMGRP NAME IGUAL CADENA
+    (91) mkusr_command -> . MKUSR opciones_mkusr
+    (105) rmusr_command -> . RMUSR USER IGUAL ID
+    (106) rmusr_command -> . RMUSR USER IGUAL CADENA
+    (107) mkfile_command -> . MKFILE opciones_mkfile
+    (120) mkdir_command -> . MKDIR opciones_mkdir
+    (128) pause_command -> . PAUSE
+    (129) rep_command -> . REP opciones_rep
+
+    EXECUTE         shift and go to state 18
+    MKDISK          shift and go to state 19
+    RMDISK          shift and go to state 20
+    FDISK           shift and go to state 21
+    MOUNT           shift and go to state 22
+    MKFS            shift and go to state 23
+    LOGIN           shift and go to state 24
+    LOGOUT          shift and go to state 25
+    MKGRP           shift and go to state 26
+    RMGRP           shift and go to state 27
+    MKUSR           shift and go to state 28
+    RMUSR           shift and go to state 29
+    MKFILE          shift and go to state 30
+    MKDIR           shift and go to state 31
+    PAUSE           shift and go to state 32
+    REP             shift and go to state 33
+
+    command                        shift and go to state 1
+    execute_command                shift and go to state 2
+    mkdisk_command                 shift and go to state 3
+    rmdisk_command                 shift and go to state 4
+    fdisk_command                  shift and go to state 5
+    mount_command                  shift and go to state 6
+    mkfs_command                   shift and go to state 7
+    login_command                  shift and go to state 8
+    logout_command                 shift and go to state 9
+    mkgrp_command                  shift and go to state 10
+    rmgrp_command                  shift and go to state 11
+    mkusr_command                  shift and go to state 12
+    rmusr_command                  shift and go to state 13
+    mkfile_command                 shift and go to state 14
+    mkdir_command                  shift and go to state 15
+    pause_command                  shift and go to state 16
+    rep_command                    shift and go to state 17
+
+state 1
+
+    (0) S' -> command .
+
+
+
+state 2
+
+    (1) command -> execute_command .
+
+    $end            reduce using rule 1 (command -> execute_command .)
+
+
+state 3
+
+    (2) command -> mkdisk_command .
+
+    $end            reduce using rule 2 (command -> mkdisk_command .)
+
+
+state 4
+
+    (3) command -> rmdisk_command .
+
+    $end            reduce using rule 3 (command -> rmdisk_command .)
+
+
+state 5
+
+    (4) command -> fdisk_command .
+
+    $end            reduce using rule 4 (command -> fdisk_command .)
+
+
+state 6
+
+    (5) command -> mount_command .
+
+    $end            reduce using rule 5 (command -> mount_command .)
+
+
+state 7
+
+    (6) command -> mkfs_command .
+
+    $end            reduce using rule 6 (command -> mkfs_command .)
+
+
+state 8
+
+    (7) command -> login_command .
+
+    $end            reduce using rule 7 (command -> login_command .)
+
+
+state 9
+
+    (8) command -> logout_command .
+
+    $end            reduce using rule 8 (command -> logout_command .)
+
+
+state 10
+
+    (9) command -> mkgrp_command .
+
+    $end            reduce using rule 9 (command -> mkgrp_command .)
+
+
+state 11
+
+    (10) command -> rmgrp_command .
+
+    $end            reduce using rule 10 (command -> rmgrp_command .)
+
+
+state 12
+
+    (11) command -> mkusr_command .
+
+    $end            reduce using rule 11 (command -> mkusr_command .)
+
+
+state 13
+
+    (12) command -> rmusr_command .
+
+    $end            reduce using rule 12 (command -> rmusr_command .)
+
+
+state 14
+
+    (13) command -> mkfile_command .
+
+    $end            reduce using rule 13 (command -> mkfile_command .)
+
+
+state 15
+
+    (14) command -> mkdir_command .
+
+    $end            reduce using rule 14 (command -> mkdir_command .)
+
+
+state 16
+
+    (15) command -> pause_command .
+
+    $end            reduce using rule 15 (command -> pause_command .)
+
+
+state 17
+
+    (16) command -> rep_command .
+
+    $end            reduce using rule 16 (command -> rep_command .)
+
+
+state 18
+
+    (29) execute_command -> EXECUTE . PATH IGUAL RUTA ID
+    (30) execute_command -> EXECUTE . PATH IGUAL CADENA
+
+    PATH            shift and go to state 34
+
+
+state 19
+
+    (17) mkdisk_command -> MKDISK . opciones
+    (18) opciones -> . opciones opciones_element
+    (19) opciones -> . opciones_element
+    (20) opciones_element -> . opcion_size
+    (21) opciones_element -> . opcion_path
+    (22) opciones_element -> . opcion_unit
+    (23) opciones_element -> . opcion_fit
+    (24) opcion_size -> . SIZE IGUAL NUMERO
+    (25) opcion_path -> . PATH IGUAL RUTA ID
+    (26) opcion_path -> . PATH IGUAL CADENA
+    (27) opcion_unit -> . UNIT IGUAL ID
+    (28) opcion_fit -> . FIT IGUAL ID
+
+    SIZE            shift and go to state 41
+    PATH            shift and go to state 42
+    UNIT            shift and go to state 43
+    FIT             shift and go to state 44
+
+    opciones                       shift and go to state 35
+    opciones_element               shift and go to state 36
+    opcion_size                    shift and go to state 37
+    opcion_path                    shift and go to state 38
+    opcion_unit                    shift and go to state 39
+    opcion_fit                     shift and go to state 40
+
+state 20
+
+    (31) rmdisk_command -> RMDISK . PATH IGUAL RUTA ID
+    (32) rmdisk_command -> RMDISK . PATH IGUAL CADENA
+
+    PATH            shift and go to state 45
+
+
+state 21
+
+    (33) fdisk_command -> FDISK . opciones_fdisk
+    (34) opciones_fdisk -> . opciones_fdisk opciones_element_fdisk
+    (35) opciones_fdisk -> . opciones_element_fdisk
+    (36) opciones_element_fdisk -> . opcionfdisk_size
+    (37) opciones_element_fdisk -> . opcionfdisk_path
+    (38) opciones_element_fdisk -> . opcionfdisk_name
+    (39) opciones_element_fdisk -> . opcionfdisk_unit
+    (40) opciones_element_fdisk -> . opcionfdisk_type
+    (41) opciones_element_fdisk -> . opcionfdisk_fit
+    (42) opciones_element_fdisk -> . opcionfdisk_delete
+    (43) opciones_element_fdisk -> . opcionfdisk_add
+    (44) opcionfdisk_size -> . SIZE IGUAL NUMERO
+    (45) opcionfdisk_path -> . PATH IGUAL RUTA ID
+    (46) opcionfdisk_path -> . PATH IGUAL CADENA
+    (47) opcionfdisk_name -> . NAME IGUAL ID
+    (48) opcionfdisk_name -> . NAME IGUAL CADENA
+    (49) opcionfdisk_unit -> . UNIT IGUAL ID
+    (50) opcionfdisk_type -> . TYPE IGUAL ID
+    (51) opcionfdisk_fit -> . FIT IGUAL ID
+    (52) opcionfdisk_delete -> . DELETE IGUAL ID
+    (53) opcionfdisk_add -> . ADD IGUAL NUMERO
+    (54) opcionfdisk_add -> . ADD IGUAL ID
+
+    SIZE            shift and go to state 56
+    PATH            shift and go to state 57
+    NAME            shift and go to state 58
+    UNIT            shift and go to state 59
+    TYPE            shift and go to state 60
+    FIT             shift and go to state 61
+    DELETE          shift and go to state 62
+    ADD             shift and go to state 63
+
+    opciones_fdisk                 shift and go to state 46
+    opciones_element_fdisk         shift and go to state 47
+    opcionfdisk_size               shift and go to state 48
+    opcionfdisk_path               shift and go to state 49
+    opcionfdisk_name               shift and go to state 50
+    opcionfdisk_unit               shift and go to state 51
+    opcionfdisk_type               shift and go to state 52
+    opcionfdisk_fit                shift and go to state 53
+    opcionfdisk_delete             shift and go to state 54
+    opcionfdisk_add                shift and go to state 55
+
+state 22
+
+    (55) mount_command -> MOUNT . opciones_mount
+    (56) opciones_mount -> . opciones_mount opciones_element_mount
+    (57) opciones_mount -> . opciones_element_mount
+    (58) opciones_element_mount -> . opcionmount_path
+    (59) opciones_element_mount -> . opcionmount_name
+    (60) opcionmount_path -> . PATH IGUAL RUTA ID
+    (61) opcionmount_path -> . PATH IGUAL CADENA
+    (62) opcionmount_name -> . NAME IGUAL ID
+    (63) opcionmount_name -> . NAME IGUAL CADENA
+
+    PATH            shift and go to state 68
+    NAME            shift and go to state 69
+
+    opciones_mount                 shift and go to state 64
+    opciones_element_mount         shift and go to state 65
+    opcionmount_path               shift and go to state 66
+    opcionmount_name               shift and go to state 67
+
+state 23
+
+    (64) mkfs_command -> MKFS . opciones_mkfs
+    (65) opciones_mkfs -> . opciones_mkfs opciones_element_mkfs
+    (66) opciones_mkfs -> . opciones_element_mkfs
+    (67) opciones_element_mkfs -> . opcionmkfs_id
+    (68) opciones_element_mkfs -> . opcionmkfs_type
+    (69) opciones_element_mkfs -> . opcionmkfs_fs
+    (70) opcionmkfs_id -> . ID_CMD IGUAL NUMERO ID
+    (71) opcionmkfs_type -> . TYPE IGUAL ID
+    (72) opcionmkfs_fs -> . FS IGUAL NUMERO ID
+
+    ID_CMD          shift and go to state 75
+    TYPE            shift and go to state 76
+    FS              shift and go to state 77
+
+    opciones_mkfs                  shift and go to state 70
+    opciones_element_mkfs          shift and go to state 71
+    opcionmkfs_id                  shift and go to state 72
+    opcionmkfs_type                shift and go to state 73
+    opcionmkfs_fs                  shift and go to state 74
+
+state 24
+
+    (73) login_command -> LOGIN . opciones_login
+    (74) opciones_login -> . opciones_login opciones_element_login
+    (75) opciones_login -> . opciones_element_login
+    (76) opciones_element_login -> . opcionlogin_usr
+    (77) opciones_element_login -> . opcionlogin_pwd
+    (78) opciones_element_login -> . opcionlogin_id
+    (79) opcionlogin_usr -> . USER IGUAL ID
+    (80) opcionlogin_usr -> . USER IGUAL CADENA
+    (81) opcionlogin_pwd -> . PASS IGUAL ID
+    (82) opcionlogin_pwd -> . PASS IGUAL NUMERO
+    (83) opcionlogin_pwd -> . PASS IGUAL CADENA
+    (84) opcionlogin_pwd -> . PASS IGUAL NUMERO ID
+    (85) opcionlogin_id -> . ID_CMD IGUAL NUMERO ID
+
+    USER            shift and go to state 83
+    PASS            shift and go to state 84
+    ID_CMD          shift and go to state 85
+
+    opciones_login                 shift and go to state 78
+    opciones_element_login         shift and go to state 79
+    opcionlogin_usr                shift and go to state 80
+    opcionlogin_pwd                shift and go to state 81
+    opcionlogin_id                 shift and go to state 82
+
+state 25
+
+    (86) logout_command -> LOGOUT .
+
+    $end            reduce using rule 86 (logout_command -> LOGOUT .)
+
+
+state 26
+
+    (87) mkgrp_command -> MKGRP . NAME IGUAL ID
+    (88) mkgrp_command -> MKGRP . NAME IGUAL CADENA
+
+    NAME            shift and go to state 86
+
+
+state 27
+
+    (89) rmgrp_command -> RMGRP . NAME IGUAL ID
+    (90) rmgrp_command -> RMGRP . NAME IGUAL CADENA
+
+    NAME            shift and go to state 87
+
+
+state 28
+
+    (91) mkusr_command -> MKUSR . opciones_mkusr
+    (92) opciones_mkusr -> . opciones_mkusr opciones_element_mkusr
+    (93) opciones_mkusr -> . opciones_element_mkusr
+    (94) opciones_element_mkusr -> . opcionmkusr_usr
+    (95) opciones_element_mkusr -> . opcionmkusr_pwd
+    (96) opciones_element_mkusr -> . opcionmkusr_grp
+    (97) opcionmkusr_usr -> . USER IGUAL ID
+    (98) opcionmkusr_usr -> . USER IGUAL CADENA
+    (99) opcionmkusr_pwd -> . PASS IGUAL ID
+    (100) opcionmkusr_pwd -> . PASS IGUAL NUMERO
+    (101) opcionmkusr_pwd -> . PASS IGUAL CADENA
+    (102) opcionmkusr_pwd -> . PASS IGUAL NUMERO ID
+    (103) opcionmkusr_grp -> . GRP IGUAL ID
+    (104) opcionmkusr_grp -> . GRP IGUAL CADENA
+
+    USER            shift and go to state 93
+    PASS            shift and go to state 94
+    GRP             shift and go to state 95
+
+    opciones_mkusr                 shift and go to state 88
+    opciones_element_mkusr         shift and go to state 89
+    opcionmkusr_usr                shift and go to state 90
+    opcionmkusr_pwd                shift and go to state 91
+    opcionmkusr_grp                shift and go to state 92
+
+state 29
+
+    (105) rmusr_command -> RMUSR . USER IGUAL ID
+    (106) rmusr_command -> RMUSR . USER IGUAL CADENA
+
+    USER            shift and go to state 96
+
+
+state 30
+
+    (107) mkfile_command -> MKFILE . opciones_mkfile
+    (108) opciones_mkfile -> . opciones_mkfile opciones_element_mkfile
+    (109) opciones_mkfile -> . opciones_element_mkfile
+    (110) opciones_element_mkfile -> . opcionmkfile_path
+    (111) opciones_element_mkfile -> . opcionmkfile_r
+    (112) opciones_element_mkfile -> . opcionmkfile_size
+    (113) opciones_element_mkfile -> . opcionmkfile_cont
+    (114) opcionmkfile_path -> . PATH IGUAL RUTA ID
+    (115) opcionmkfile_path -> . PATH IGUAL CADENA
+    (116) opcionmkfile_r -> . R
+    (117) opcionmkfile_size -> . SIZE IGUAL NUMERO
+    (118) opcionmkfile_cont -> . CONT IGUAL CADENA
+    (119) opcionmkfile_cont -> . CONT IGUAL RUTA ID
+
+    PATH            shift and go to state 103
+    R               shift and go to state 104
+    SIZE            shift and go to state 105
+    CONT            shift and go to state 106
+
+    opciones_mkfile                shift and go to state 97
+    opciones_element_mkfile        shift and go to state 98
+    opcionmkfile_path              shift and go to state 99
+    opcionmkfile_r                 shift and go to state 100
+    opcionmkfile_size              shift and go to state 101
+    opcionmkfile_cont              shift and go to state 102
+
+state 31
+
+    (120) mkdir_command -> MKDIR . opciones_mkdir
+    (121) opciones_mkdir -> . opciones_mkdir opciones_element_mkdir
+    (122) opciones_mkdir -> . opciones_element_mkdir
+    (123) opciones_element_mkdir -> . opcionmkdir_path
+    (124) opciones_element_mkdir -> . opcionmkdir_r
+    (125) opcionmkdir_path -> . PATH IGUAL RUTA
+    (126) opcionmkdir_path -> . PATH IGUAL CADENA
+    (127) opcionmkdir_r -> . R
+
+    PATH            shift and go to state 111
+    R               shift and go to state 112
+
+    opciones_mkdir                 shift and go to state 107
+    opciones_element_mkdir         shift and go to state 108
+    opcionmkdir_path               shift and go to state 109
+    opcionmkdir_r                  shift and go to state 110
+
+state 32
+
+    (128) pause_command -> PAUSE .
+
+    $end            reduce using rule 128 (pause_command -> PAUSE .)
+
+
+state 33
+
+    (129) rep_command -> REP . opciones_rep
+    (130) opciones_rep -> . opciones_rep opciones_element_rep
+    (131) opciones_rep -> . opciones_element_rep
+    (132) opciones_element_rep -> . opcionrep_id
+    (133) opciones_element_rep -> . opcionrep_path
+    (134) opciones_element_rep -> . opcionrep_name
+    (135) opciones_element_rep -> . opcionrep_ruta
+    (136) opcionrep_id -> . ID_CMD IGUAL NUMERO ID
+    (137) opcionrep_path -> . PATH IGUAL RUTA ID
+    (138) opcionrep_path -> . PATH IGUAL RUTA
+    (139) opcionrep_path -> . PATH IGUAL CADENA
+    (140) opcionrep_name -> . NAME IGUAL ID
+    (141) opcionrep_name -> . NAME IGUAL CADENA
+    (142) opcionrep_ruta -> . RUTAC IGUAL RUTA ID
+    (143) opcionrep_ruta -> . RUTAC IGUAL RUTA
+    (144) opcionrep_ruta -> . RUTAC IGUAL CADENA
+
+    ID_CMD          shift and go to state 119
+    PATH            shift and go to state 120
+    NAME            shift and go to state 121
+    RUTAC           shift and go to state 122
+
+    opciones_rep                   shift and go to state 113
+    opciones_element_rep           shift and go to state 114
+    opcionrep_id                   shift and go to state 115
+    opcionrep_path                 shift and go to state 116
+    opcionrep_name                 shift and go to state 117
+    opcionrep_ruta                 shift and go to state 118
+
+state 34
+
+    (29) execute_command -> EXECUTE PATH . IGUAL RUTA ID
+    (30) execute_command -> EXECUTE PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 123
+
+
+state 35
+
+    (17) mkdisk_command -> MKDISK opciones .
+    (18) opciones -> opciones . opciones_element
+    (20) opciones_element -> . opcion_size
+    (21) opciones_element -> . opcion_path
+    (22) opciones_element -> . opcion_unit
+    (23) opciones_element -> . opcion_fit
+    (24) opcion_size -> . SIZE IGUAL NUMERO
+    (25) opcion_path -> . PATH IGUAL RUTA ID
+    (26) opcion_path -> . PATH IGUAL CADENA
+    (27) opcion_unit -> . UNIT IGUAL ID
+    (28) opcion_fit -> . FIT IGUAL ID
+
+    $end            reduce using rule 17 (mkdisk_command -> MKDISK opciones .)
+    SIZE            shift and go to state 41
+    PATH            shift and go to state 42
+    UNIT            shift and go to state 43
+    FIT             shift and go to state 44
+
+    opciones_element               shift and go to state 124
+    opcion_size                    shift and go to state 37
+    opcion_path                    shift and go to state 38
+    opcion_unit                    shift and go to state 39
+    opcion_fit                     shift and go to state 40
+
+state 36
+
+    (19) opciones -> opciones_element .
+
+    SIZE            reduce using rule 19 (opciones -> opciones_element .)
+    PATH            reduce using rule 19 (opciones -> opciones_element .)
+    UNIT            reduce using rule 19 (opciones -> opciones_element .)
+    FIT             reduce using rule 19 (opciones -> opciones_element .)
+    $end            reduce using rule 19 (opciones -> opciones_element .)
+
+
+state 37
+
+    (20) opciones_element -> opcion_size .
+
+    SIZE            reduce using rule 20 (opciones_element -> opcion_size .)
+    PATH            reduce using rule 20 (opciones_element -> opcion_size .)
+    UNIT            reduce using rule 20 (opciones_element -> opcion_size .)
+    FIT             reduce using rule 20 (opciones_element -> opcion_size .)
+    $end            reduce using rule 20 (opciones_element -> opcion_size .)
+
+
+state 38
+
+    (21) opciones_element -> opcion_path .
+
+    SIZE            reduce using rule 21 (opciones_element -> opcion_path .)
+    PATH            reduce using rule 21 (opciones_element -> opcion_path .)
+    UNIT            reduce using rule 21 (opciones_element -> opcion_path .)
+    FIT             reduce using rule 21 (opciones_element -> opcion_path .)
+    $end            reduce using rule 21 (opciones_element -> opcion_path .)
+
+
+state 39
+
+    (22) opciones_element -> opcion_unit .
+
+    SIZE            reduce using rule 22 (opciones_element -> opcion_unit .)
+    PATH            reduce using rule 22 (opciones_element -> opcion_unit .)
+    UNIT            reduce using rule 22 (opciones_element -> opcion_unit .)
+    FIT             reduce using rule 22 (opciones_element -> opcion_unit .)
+    $end            reduce using rule 22 (opciones_element -> opcion_unit .)
+
+
+state 40
+
+    (23) opciones_element -> opcion_fit .
+
+    SIZE            reduce using rule 23 (opciones_element -> opcion_fit .)
+    PATH            reduce using rule 23 (opciones_element -> opcion_fit .)
+    UNIT            reduce using rule 23 (opciones_element -> opcion_fit .)
+    FIT             reduce using rule 23 (opciones_element -> opcion_fit .)
+    $end            reduce using rule 23 (opciones_element -> opcion_fit .)
+
+
+state 41
+
+    (24) opcion_size -> SIZE . IGUAL NUMERO
+
+    IGUAL           shift and go to state 125
+
+
+state 42
+
+    (25) opcion_path -> PATH . IGUAL RUTA ID
+    (26) opcion_path -> PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 126
+
+
+state 43
+
+    (27) opcion_unit -> UNIT . IGUAL ID
+
+    IGUAL           shift and go to state 127
+
+
+state 44
+
+    (28) opcion_fit -> FIT . IGUAL ID
+
+    IGUAL           shift and go to state 128
+
+
+state 45
+
+    (31) rmdisk_command -> RMDISK PATH . IGUAL RUTA ID
+    (32) rmdisk_command -> RMDISK PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 129
+
+
+state 46
+
+    (33) fdisk_command -> FDISK opciones_fdisk .
+    (34) opciones_fdisk -> opciones_fdisk . opciones_element_fdisk
+    (36) opciones_element_fdisk -> . opcionfdisk_size
+    (37) opciones_element_fdisk -> . opcionfdisk_path
+    (38) opciones_element_fdisk -> . opcionfdisk_name
+    (39) opciones_element_fdisk -> . opcionfdisk_unit
+    (40) opciones_element_fdisk -> . opcionfdisk_type
+    (41) opciones_element_fdisk -> . opcionfdisk_fit
+    (42) opciones_element_fdisk -> . opcionfdisk_delete
+    (43) opciones_element_fdisk -> . opcionfdisk_add
+    (44) opcionfdisk_size -> . SIZE IGUAL NUMERO
+    (45) opcionfdisk_path -> . PATH IGUAL RUTA ID
+    (46) opcionfdisk_path -> . PATH IGUAL CADENA
+    (47) opcionfdisk_name -> . NAME IGUAL ID
+    (48) opcionfdisk_name -> . NAME IGUAL CADENA
+    (49) opcionfdisk_unit -> . UNIT IGUAL ID
+    (50) opcionfdisk_type -> . TYPE IGUAL ID
+    (51) opcionfdisk_fit -> . FIT IGUAL ID
+    (52) opcionfdisk_delete -> . DELETE IGUAL ID
+    (53) opcionfdisk_add -> . ADD IGUAL NUMERO
+    (54) opcionfdisk_add -> . ADD IGUAL ID
+
+    $end            reduce using rule 33 (fdisk_command -> FDISK opciones_fdisk .)
+    SIZE            shift and go to state 56
+    PATH            shift and go to state 57
+    NAME            shift and go to state 58
+    UNIT            shift and go to state 59
+    TYPE            shift and go to state 60
+    FIT             shift and go to state 61
+    DELETE          shift and go to state 62
+    ADD             shift and go to state 63
+
+    opciones_element_fdisk         shift and go to state 130
+    opcionfdisk_size               shift and go to state 48
+    opcionfdisk_path               shift and go to state 49
+    opcionfdisk_name               shift and go to state 50
+    opcionfdisk_unit               shift and go to state 51
+    opcionfdisk_type               shift and go to state 52
+    opcionfdisk_fit                shift and go to state 53
+    opcionfdisk_delete             shift and go to state 54
+    opcionfdisk_add                shift and go to state 55
+
+state 47
+
+    (35) opciones_fdisk -> opciones_element_fdisk .
+
+    SIZE            reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    PATH            reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    NAME            reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    UNIT            reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    TYPE            reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    FIT             reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    DELETE          reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    ADD             reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+    $end            reduce using rule 35 (opciones_fdisk -> opciones_element_fdisk .)
+
+
+state 48
+
+    (36) opciones_element_fdisk -> opcionfdisk_size .
+
+    SIZE            reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    PATH            reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    NAME            reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    UNIT            reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    TYPE            reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    FIT             reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    DELETE          reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    ADD             reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+    $end            reduce using rule 36 (opciones_element_fdisk -> opcionfdisk_size .)
+
+
+state 49
+
+    (37) opciones_element_fdisk -> opcionfdisk_path .
+
+    SIZE            reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    PATH            reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    NAME            reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    UNIT            reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    TYPE            reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    FIT             reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    DELETE          reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    ADD             reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+    $end            reduce using rule 37 (opciones_element_fdisk -> opcionfdisk_path .)
+
+
+state 50
+
+    (38) opciones_element_fdisk -> opcionfdisk_name .
+
+    SIZE            reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    PATH            reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    NAME            reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    UNIT            reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    TYPE            reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    FIT             reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    DELETE          reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    ADD             reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+    $end            reduce using rule 38 (opciones_element_fdisk -> opcionfdisk_name .)
+
+
+state 51
+
+    (39) opciones_element_fdisk -> opcionfdisk_unit .
+
+    SIZE            reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    PATH            reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    NAME            reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    UNIT            reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    TYPE            reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    FIT             reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    DELETE          reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    ADD             reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+    $end            reduce using rule 39 (opciones_element_fdisk -> opcionfdisk_unit .)
+
+
+state 52
+
+    (40) opciones_element_fdisk -> opcionfdisk_type .
+
+    SIZE            reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    PATH            reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    NAME            reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    UNIT            reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    TYPE            reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    FIT             reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    DELETE          reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    ADD             reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+    $end            reduce using rule 40 (opciones_element_fdisk -> opcionfdisk_type .)
+
+
+state 53
+
+    (41) opciones_element_fdisk -> opcionfdisk_fit .
+
+    SIZE            reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    PATH            reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    NAME            reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    UNIT            reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    TYPE            reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    FIT             reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    DELETE          reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    ADD             reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+    $end            reduce using rule 41 (opciones_element_fdisk -> opcionfdisk_fit .)
+
+
+state 54
+
+    (42) opciones_element_fdisk -> opcionfdisk_delete .
+
+    SIZE            reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    PATH            reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    NAME            reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    UNIT            reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    TYPE            reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    FIT             reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    DELETE          reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    ADD             reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+    $end            reduce using rule 42 (opciones_element_fdisk -> opcionfdisk_delete .)
+
+
+state 55
+
+    (43) opciones_element_fdisk -> opcionfdisk_add .
+
+    SIZE            reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    PATH            reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    NAME            reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    UNIT            reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    TYPE            reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    FIT             reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    DELETE          reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    ADD             reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+    $end            reduce using rule 43 (opciones_element_fdisk -> opcionfdisk_add .)
+
+
+state 56
+
+    (44) opcionfdisk_size -> SIZE . IGUAL NUMERO
+
+    IGUAL           shift and go to state 131
+
+
+state 57
+
+    (45) opcionfdisk_path -> PATH . IGUAL RUTA ID
+    (46) opcionfdisk_path -> PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 132
+
+
+state 58
+
+    (47) opcionfdisk_name -> NAME . IGUAL ID
+    (48) opcionfdisk_name -> NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 133
+
+
+state 59
+
+    (49) opcionfdisk_unit -> UNIT . IGUAL ID
+
+    IGUAL           shift and go to state 134
+
+
+state 60
+
+    (50) opcionfdisk_type -> TYPE . IGUAL ID
+
+    IGUAL           shift and go to state 135
+
+
+state 61
+
+    (51) opcionfdisk_fit -> FIT . IGUAL ID
+
+    IGUAL           shift and go to state 136
+
+
+state 62
+
+    (52) opcionfdisk_delete -> DELETE . IGUAL ID
+
+    IGUAL           shift and go to state 137
+
+
+state 63
+
+    (53) opcionfdisk_add -> ADD . IGUAL NUMERO
+    (54) opcionfdisk_add -> ADD . IGUAL ID
+
+    IGUAL           shift and go to state 138
+
+
+state 64
+
+    (55) mount_command -> MOUNT opciones_mount .
+    (56) opciones_mount -> opciones_mount . opciones_element_mount
+    (58) opciones_element_mount -> . opcionmount_path
+    (59) opciones_element_mount -> . opcionmount_name
+    (60) opcionmount_path -> . PATH IGUAL RUTA ID
+    (61) opcionmount_path -> . PATH IGUAL CADENA
+    (62) opcionmount_name -> . NAME IGUAL ID
+    (63) opcionmount_name -> . NAME IGUAL CADENA
+
+    $end            reduce using rule 55 (mount_command -> MOUNT opciones_mount .)
+    PATH            shift and go to state 68
+    NAME            shift and go to state 69
+
+    opciones_element_mount         shift and go to state 139
+    opcionmount_path               shift and go to state 66
+    opcionmount_name               shift and go to state 67
+
+state 65
+
+    (57) opciones_mount -> opciones_element_mount .
+
+    PATH            reduce using rule 57 (opciones_mount -> opciones_element_mount .)
+    NAME            reduce using rule 57 (opciones_mount -> opciones_element_mount .)
+    $end            reduce using rule 57 (opciones_mount -> opciones_element_mount .)
+
+
+state 66
+
+    (58) opciones_element_mount -> opcionmount_path .
+
+    PATH            reduce using rule 58 (opciones_element_mount -> opcionmount_path .)
+    NAME            reduce using rule 58 (opciones_element_mount -> opcionmount_path .)
+    $end            reduce using rule 58 (opciones_element_mount -> opcionmount_path .)
+
+
+state 67
+
+    (59) opciones_element_mount -> opcionmount_name .
+
+    PATH            reduce using rule 59 (opciones_element_mount -> opcionmount_name .)
+    NAME            reduce using rule 59 (opciones_element_mount -> opcionmount_name .)
+    $end            reduce using rule 59 (opciones_element_mount -> opcionmount_name .)
+
+
+state 68
+
+    (60) opcionmount_path -> PATH . IGUAL RUTA ID
+    (61) opcionmount_path -> PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 140
+
+
+state 69
+
+    (62) opcionmount_name -> NAME . IGUAL ID
+    (63) opcionmount_name -> NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 141
+
+
+state 70
+
+    (64) mkfs_command -> MKFS opciones_mkfs .
+    (65) opciones_mkfs -> opciones_mkfs . opciones_element_mkfs
+    (67) opciones_element_mkfs -> . opcionmkfs_id
+    (68) opciones_element_mkfs -> . opcionmkfs_type
+    (69) opciones_element_mkfs -> . opcionmkfs_fs
+    (70) opcionmkfs_id -> . ID_CMD IGUAL NUMERO ID
+    (71) opcionmkfs_type -> . TYPE IGUAL ID
+    (72) opcionmkfs_fs -> . FS IGUAL NUMERO ID
+
+    $end            reduce using rule 64 (mkfs_command -> MKFS opciones_mkfs .)
+    ID_CMD          shift and go to state 75
+    TYPE            shift and go to state 76
+    FS              shift and go to state 77
+
+    opciones_element_mkfs          shift and go to state 142
+    opcionmkfs_id                  shift and go to state 72
+    opcionmkfs_type                shift and go to state 73
+    opcionmkfs_fs                  shift and go to state 74
+
+state 71
+
+    (66) opciones_mkfs -> opciones_element_mkfs .
+
+    ID_CMD          reduce using rule 66 (opciones_mkfs -> opciones_element_mkfs .)
+    TYPE            reduce using rule 66 (opciones_mkfs -> opciones_element_mkfs .)
+    FS              reduce using rule 66 (opciones_mkfs -> opciones_element_mkfs .)
+    $end            reduce using rule 66 (opciones_mkfs -> opciones_element_mkfs .)
+
+
+state 72
+
+    (67) opciones_element_mkfs -> opcionmkfs_id .
+
+    ID_CMD          reduce using rule 67 (opciones_element_mkfs -> opcionmkfs_id .)
+    TYPE            reduce using rule 67 (opciones_element_mkfs -> opcionmkfs_id .)
+    FS              reduce using rule 67 (opciones_element_mkfs -> opcionmkfs_id .)
+    $end            reduce using rule 67 (opciones_element_mkfs -> opcionmkfs_id .)
+
+
+state 73
+
+    (68) opciones_element_mkfs -> opcionmkfs_type .
+
+    ID_CMD          reduce using rule 68 (opciones_element_mkfs -> opcionmkfs_type .)
+    TYPE            reduce using rule 68 (opciones_element_mkfs -> opcionmkfs_type .)
+    FS              reduce using rule 68 (opciones_element_mkfs -> opcionmkfs_type .)
+    $end            reduce using rule 68 (opciones_element_mkfs -> opcionmkfs_type .)
+
+
+state 74
+
+    (69) opciones_element_mkfs -> opcionmkfs_fs .
+
+    ID_CMD          reduce using rule 69 (opciones_element_mkfs -> opcionmkfs_fs .)
+    TYPE            reduce using rule 69 (opciones_element_mkfs -> opcionmkfs_fs .)
+    FS              reduce using rule 69 (opciones_element_mkfs -> opcionmkfs_fs .)
+    $end            reduce using rule 69 (opciones_element_mkfs -> opcionmkfs_fs .)
+
+
+state 75
+
+    (70) opcionmkfs_id -> ID_CMD . IGUAL NUMERO ID
+
+    IGUAL           shift and go to state 143
+
+
+state 76
+
+    (71) opcionmkfs_type -> TYPE . IGUAL ID
+
+    IGUAL           shift and go to state 144
+
+
+state 77
+
+    (72) opcionmkfs_fs -> FS . IGUAL NUMERO ID
+
+    IGUAL           shift and go to state 145
+
+
+state 78
+
+    (73) login_command -> LOGIN opciones_login .
+    (74) opciones_login -> opciones_login . opciones_element_login
+    (76) opciones_element_login -> . opcionlogin_usr
+    (77) opciones_element_login -> . opcionlogin_pwd
+    (78) opciones_element_login -> . opcionlogin_id
+    (79) opcionlogin_usr -> . USER IGUAL ID
+    (80) opcionlogin_usr -> . USER IGUAL CADENA
+    (81) opcionlogin_pwd -> . PASS IGUAL ID
+    (82) opcionlogin_pwd -> . PASS IGUAL NUMERO
+    (83) opcionlogin_pwd -> . PASS IGUAL CADENA
+    (84) opcionlogin_pwd -> . PASS IGUAL NUMERO ID
+    (85) opcionlogin_id -> . ID_CMD IGUAL NUMERO ID
+
+    $end            reduce using rule 73 (login_command -> LOGIN opciones_login .)
+    USER            shift and go to state 83
+    PASS            shift and go to state 84
+    ID_CMD          shift and go to state 85
+
+    opciones_element_login         shift and go to state 146
+    opcionlogin_usr                shift and go to state 80
+    opcionlogin_pwd                shift and go to state 81
+    opcionlogin_id                 shift and go to state 82
+
+state 79
+
+    (75) opciones_login -> opciones_element_login .
+
+    USER            reduce using rule 75 (opciones_login -> opciones_element_login .)
+    PASS            reduce using rule 75 (opciones_login -> opciones_element_login .)
+    ID_CMD          reduce using rule 75 (opciones_login -> opciones_element_login .)
+    $end            reduce using rule 75 (opciones_login -> opciones_element_login .)
+
+
+state 80
+
+    (76) opciones_element_login -> opcionlogin_usr .
+
+    USER            reduce using rule 76 (opciones_element_login -> opcionlogin_usr .)
+    PASS            reduce using rule 76 (opciones_element_login -> opcionlogin_usr .)
+    ID_CMD          reduce using rule 76 (opciones_element_login -> opcionlogin_usr .)
+    $end            reduce using rule 76 (opciones_element_login -> opcionlogin_usr .)
+
+
+state 81
+
+    (77) opciones_element_login -> opcionlogin_pwd .
+
+    USER            reduce using rule 77 (opciones_element_login -> opcionlogin_pwd .)
+    PASS            reduce using rule 77 (opciones_element_login -> opcionlogin_pwd .)
+    ID_CMD          reduce using rule 77 (opciones_element_login -> opcionlogin_pwd .)
+    $end            reduce using rule 77 (opciones_element_login -> opcionlogin_pwd .)
+
+
+state 82
+
+    (78) opciones_element_login -> opcionlogin_id .
+
+    USER            reduce using rule 78 (opciones_element_login -> opcionlogin_id .)
+    PASS            reduce using rule 78 (opciones_element_login -> opcionlogin_id .)
+    ID_CMD          reduce using rule 78 (opciones_element_login -> opcionlogin_id .)
+    $end            reduce using rule 78 (opciones_element_login -> opcionlogin_id .)
+
+
+state 83
+
+    (79) opcionlogin_usr -> USER . IGUAL ID
+    (80) opcionlogin_usr -> USER . IGUAL CADENA
+
+    IGUAL           shift and go to state 147
+
+
+state 84
+
+    (81) opcionlogin_pwd -> PASS . IGUAL ID
+    (82) opcionlogin_pwd -> PASS . IGUAL NUMERO
+    (83) opcionlogin_pwd -> PASS . IGUAL CADENA
+    (84) opcionlogin_pwd -> PASS . IGUAL NUMERO ID
+
+    IGUAL           shift and go to state 148
+
+
+state 85
+
+    (85) opcionlogin_id -> ID_CMD . IGUAL NUMERO ID
+
+    IGUAL           shift and go to state 149
+
+
+state 86
+
+    (87) mkgrp_command -> MKGRP NAME . IGUAL ID
+    (88) mkgrp_command -> MKGRP NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 150
+
+
+state 87
+
+    (89) rmgrp_command -> RMGRP NAME . IGUAL ID
+    (90) rmgrp_command -> RMGRP NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 151
+
+
+state 88
+
+    (91) mkusr_command -> MKUSR opciones_mkusr .
+    (92) opciones_mkusr -> opciones_mkusr . opciones_element_mkusr
+    (94) opciones_element_mkusr -> . opcionmkusr_usr
+    (95) opciones_element_mkusr -> . opcionmkusr_pwd
+    (96) opciones_element_mkusr -> . opcionmkusr_grp
+    (97) opcionmkusr_usr -> . USER IGUAL ID
+    (98) opcionmkusr_usr -> . USER IGUAL CADENA
+    (99) opcionmkusr_pwd -> . PASS IGUAL ID
+    (100) opcionmkusr_pwd -> . PASS IGUAL NUMERO
+    (101) opcionmkusr_pwd -> . PASS IGUAL CADENA
+    (102) opcionmkusr_pwd -> . PASS IGUAL NUMERO ID
+    (103) opcionmkusr_grp -> . GRP IGUAL ID
+    (104) opcionmkusr_grp -> . GRP IGUAL CADENA
+
+    $end            reduce using rule 91 (mkusr_command -> MKUSR opciones_mkusr .)
+    USER            shift and go to state 93
+    PASS            shift and go to state 94
+    GRP             shift and go to state 95
+
+    opciones_element_mkusr         shift and go to state 152
+    opcionmkusr_usr                shift and go to state 90
+    opcionmkusr_pwd                shift and go to state 91
+    opcionmkusr_grp                shift and go to state 92
+
+state 89
+
+    (93) opciones_mkusr -> opciones_element_mkusr .
+
+    USER            reduce using rule 93 (opciones_mkusr -> opciones_element_mkusr .)
+    PASS            reduce using rule 93 (opciones_mkusr -> opciones_element_mkusr .)
+    GRP             reduce using rule 93 (opciones_mkusr -> opciones_element_mkusr .)
+    $end            reduce using rule 93 (opciones_mkusr -> opciones_element_mkusr .)
+
+
+state 90
+
+    (94) opciones_element_mkusr -> opcionmkusr_usr .
+
+    USER            reduce using rule 94 (opciones_element_mkusr -> opcionmkusr_usr .)
+    PASS            reduce using rule 94 (opciones_element_mkusr -> opcionmkusr_usr .)
+    GRP             reduce using rule 94 (opciones_element_mkusr -> opcionmkusr_usr .)
+    $end            reduce using rule 94 (opciones_element_mkusr -> opcionmkusr_usr .)
+
+
+state 91
+
+    (95) opciones_element_mkusr -> opcionmkusr_pwd .
+
+    USER            reduce using rule 95 (opciones_element_mkusr -> opcionmkusr_pwd .)
+    PASS            reduce using rule 95 (opciones_element_mkusr -> opcionmkusr_pwd .)
+    GRP             reduce using rule 95 (opciones_element_mkusr -> opcionmkusr_pwd .)
+    $end            reduce using rule 95 (opciones_element_mkusr -> opcionmkusr_pwd .)
+
+
+state 92
+
+    (96) opciones_element_mkusr -> opcionmkusr_grp .
+
+    USER            reduce using rule 96 (opciones_element_mkusr -> opcionmkusr_grp .)
+    PASS            reduce using rule 96 (opciones_element_mkusr -> opcionmkusr_grp .)
+    GRP             reduce using rule 96 (opciones_element_mkusr -> opcionmkusr_grp .)
+    $end            reduce using rule 96 (opciones_element_mkusr -> opcionmkusr_grp .)
+
+
+state 93
+
+    (97) opcionmkusr_usr -> USER . IGUAL ID
+    (98) opcionmkusr_usr -> USER . IGUAL CADENA
+
+    IGUAL           shift and go to state 153
+
+
+state 94
+
+    (99) opcionmkusr_pwd -> PASS . IGUAL ID
+    (100) opcionmkusr_pwd -> PASS . IGUAL NUMERO
+    (101) opcionmkusr_pwd -> PASS . IGUAL CADENA
+    (102) opcionmkusr_pwd -> PASS . IGUAL NUMERO ID
+
+    IGUAL           shift and go to state 154
+
+
+state 95
+
+    (103) opcionmkusr_grp -> GRP . IGUAL ID
+    (104) opcionmkusr_grp -> GRP . IGUAL CADENA
+
+    IGUAL           shift and go to state 155
+
+
+state 96
+
+    (105) rmusr_command -> RMUSR USER . IGUAL ID
+    (106) rmusr_command -> RMUSR USER . IGUAL CADENA
+
+    IGUAL           shift and go to state 156
+
+
+state 97
+
+    (107) mkfile_command -> MKFILE opciones_mkfile .
+    (108) opciones_mkfile -> opciones_mkfile . opciones_element_mkfile
+    (110) opciones_element_mkfile -> . opcionmkfile_path
+    (111) opciones_element_mkfile -> . opcionmkfile_r
+    (112) opciones_element_mkfile -> . opcionmkfile_size
+    (113) opciones_element_mkfile -> . opcionmkfile_cont
+    (114) opcionmkfile_path -> . PATH IGUAL RUTA ID
+    (115) opcionmkfile_path -> . PATH IGUAL CADENA
+    (116) opcionmkfile_r -> . R
+    (117) opcionmkfile_size -> . SIZE IGUAL NUMERO
+    (118) opcionmkfile_cont -> . CONT IGUAL CADENA
+    (119) opcionmkfile_cont -> . CONT IGUAL RUTA ID
+
+    $end            reduce using rule 107 (mkfile_command -> MKFILE opciones_mkfile .)
+    PATH            shift and go to state 103
+    R               shift and go to state 104
+    SIZE            shift and go to state 105
+    CONT            shift and go to state 106
+
+    opciones_element_mkfile        shift and go to state 157
+    opcionmkfile_path              shift and go to state 99
+    opcionmkfile_r                 shift and go to state 100
+    opcionmkfile_size              shift and go to state 101
+    opcionmkfile_cont              shift and go to state 102
+
+state 98
+
+    (109) opciones_mkfile -> opciones_element_mkfile .
+
+    PATH            reduce using rule 109 (opciones_mkfile -> opciones_element_mkfile .)
+    R               reduce using rule 109 (opciones_mkfile -> opciones_element_mkfile .)
+    SIZE            reduce using rule 109 (opciones_mkfile -> opciones_element_mkfile .)
+    CONT            reduce using rule 109 (opciones_mkfile -> opciones_element_mkfile .)
+    $end            reduce using rule 109 (opciones_mkfile -> opciones_element_mkfile .)
+
+
+state 99
+
+    (110) opciones_element_mkfile -> opcionmkfile_path .
+
+    PATH            reduce using rule 110 (opciones_element_mkfile -> opcionmkfile_path .)
+    R               reduce using rule 110 (opciones_element_mkfile -> opcionmkfile_path .)
+    SIZE            reduce using rule 110 (opciones_element_mkfile -> opcionmkfile_path .)
+    CONT            reduce using rule 110 (opciones_element_mkfile -> opcionmkfile_path .)
+    $end            reduce using rule 110 (opciones_element_mkfile -> opcionmkfile_path .)
+
+
+state 100
+
+    (111) opciones_element_mkfile -> opcionmkfile_r .
+
+    PATH            reduce using rule 111 (opciones_element_mkfile -> opcionmkfile_r .)
+    R               reduce using rule 111 (opciones_element_mkfile -> opcionmkfile_r .)
+    SIZE            reduce using rule 111 (opciones_element_mkfile -> opcionmkfile_r .)
+    CONT            reduce using rule 111 (opciones_element_mkfile -> opcionmkfile_r .)
+    $end            reduce using rule 111 (opciones_element_mkfile -> opcionmkfile_r .)
+
+
+state 101
+
+    (112) opciones_element_mkfile -> opcionmkfile_size .
+
+    PATH            reduce using rule 112 (opciones_element_mkfile -> opcionmkfile_size .)
+    R               reduce using rule 112 (opciones_element_mkfile -> opcionmkfile_size .)
+    SIZE            reduce using rule 112 (opciones_element_mkfile -> opcionmkfile_size .)
+    CONT            reduce using rule 112 (opciones_element_mkfile -> opcionmkfile_size .)
+    $end            reduce using rule 112 (opciones_element_mkfile -> opcionmkfile_size .)
+
+
+state 102
+
+    (113) opciones_element_mkfile -> opcionmkfile_cont .
+
+    PATH            reduce using rule 113 (opciones_element_mkfile -> opcionmkfile_cont .)
+    R               reduce using rule 113 (opciones_element_mkfile -> opcionmkfile_cont .)
+    SIZE            reduce using rule 113 (opciones_element_mkfile -> opcionmkfile_cont .)
+    CONT            reduce using rule 113 (opciones_element_mkfile -> opcionmkfile_cont .)
+    $end            reduce using rule 113 (opciones_element_mkfile -> opcionmkfile_cont .)
+
+
+state 103
+
+    (114) opcionmkfile_path -> PATH . IGUAL RUTA ID
+    (115) opcionmkfile_path -> PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 158
+
+
+state 104
+
+    (116) opcionmkfile_r -> R .
+
+    PATH            reduce using rule 116 (opcionmkfile_r -> R .)
+    R               reduce using rule 116 (opcionmkfile_r -> R .)
+    SIZE            reduce using rule 116 (opcionmkfile_r -> R .)
+    CONT            reduce using rule 116 (opcionmkfile_r -> R .)
+    $end            reduce using rule 116 (opcionmkfile_r -> R .)
+
+
+state 105
+
+    (117) opcionmkfile_size -> SIZE . IGUAL NUMERO
+
+    IGUAL           shift and go to state 159
+
+
+state 106
+
+    (118) opcionmkfile_cont -> CONT . IGUAL CADENA
+    (119) opcionmkfile_cont -> CONT . IGUAL RUTA ID
+
+    IGUAL           shift and go to state 160
+
+
+state 107
+
+    (120) mkdir_command -> MKDIR opciones_mkdir .
+    (121) opciones_mkdir -> opciones_mkdir . opciones_element_mkdir
+    (123) opciones_element_mkdir -> . opcionmkdir_path
+    (124) opciones_element_mkdir -> . opcionmkdir_r
+    (125) opcionmkdir_path -> . PATH IGUAL RUTA
+    (126) opcionmkdir_path -> . PATH IGUAL CADENA
+    (127) opcionmkdir_r -> . R
+
+    $end            reduce using rule 120 (mkdir_command -> MKDIR opciones_mkdir .)
+    PATH            shift and go to state 111
+    R               shift and go to state 112
+
+    opciones_element_mkdir         shift and go to state 161
+    opcionmkdir_path               shift and go to state 109
+    opcionmkdir_r                  shift and go to state 110
+
+state 108
+
+    (122) opciones_mkdir -> opciones_element_mkdir .
+
+    PATH            reduce using rule 122 (opciones_mkdir -> opciones_element_mkdir .)
+    R               reduce using rule 122 (opciones_mkdir -> opciones_element_mkdir .)
+    $end            reduce using rule 122 (opciones_mkdir -> opciones_element_mkdir .)
+
+
+state 109
+
+    (123) opciones_element_mkdir -> opcionmkdir_path .
+
+    PATH            reduce using rule 123 (opciones_element_mkdir -> opcionmkdir_path .)
+    R               reduce using rule 123 (opciones_element_mkdir -> opcionmkdir_path .)
+    $end            reduce using rule 123 (opciones_element_mkdir -> opcionmkdir_path .)
+
+
+state 110
+
+    (124) opciones_element_mkdir -> opcionmkdir_r .
+
+    PATH            reduce using rule 124 (opciones_element_mkdir -> opcionmkdir_r .)
+    R               reduce using rule 124 (opciones_element_mkdir -> opcionmkdir_r .)
+    $end            reduce using rule 124 (opciones_element_mkdir -> opcionmkdir_r .)
+
+
+state 111
+
+    (125) opcionmkdir_path -> PATH . IGUAL RUTA
+    (126) opcionmkdir_path -> PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 162
+
+
+state 112
+
+    (127) opcionmkdir_r -> R .
+
+    PATH            reduce using rule 127 (opcionmkdir_r -> R .)
+    R               reduce using rule 127 (opcionmkdir_r -> R .)
+    $end            reduce using rule 127 (opcionmkdir_r -> R .)
+
+
+state 113
+
+    (129) rep_command -> REP opciones_rep .
+    (130) opciones_rep -> opciones_rep . opciones_element_rep
+    (132) opciones_element_rep -> . opcionrep_id
+    (133) opciones_element_rep -> . opcionrep_path
+    (134) opciones_element_rep -> . opcionrep_name
+    (135) opciones_element_rep -> . opcionrep_ruta
+    (136) opcionrep_id -> . ID_CMD IGUAL NUMERO ID
+    (137) opcionrep_path -> . PATH IGUAL RUTA ID
+    (138) opcionrep_path -> . PATH IGUAL RUTA
+    (139) opcionrep_path -> . PATH IGUAL CADENA
+    (140) opcionrep_name -> . NAME IGUAL ID
+    (141) opcionrep_name -> . NAME IGUAL CADENA
+    (142) opcionrep_ruta -> . RUTAC IGUAL RUTA ID
+    (143) opcionrep_ruta -> . RUTAC IGUAL RUTA
+    (144) opcionrep_ruta -> . RUTAC IGUAL CADENA
+
+    $end            reduce using rule 129 (rep_command -> REP opciones_rep .)
+    ID_CMD          shift and go to state 119
+    PATH            shift and go to state 120
+    NAME            shift and go to state 121
+    RUTAC           shift and go to state 122
+
+    opciones_element_rep           shift and go to state 163
+    opcionrep_id                   shift and go to state 115
+    opcionrep_path                 shift and go to state 116
+    opcionrep_name                 shift and go to state 117
+    opcionrep_ruta                 shift and go to state 118
+
+state 114
+
+    (131) opciones_rep -> opciones_element_rep .
+
+    ID_CMD          reduce using rule 131 (opciones_rep -> opciones_element_rep .)
+    PATH            reduce using rule 131 (opciones_rep -> opciones_element_rep .)
+    NAME            reduce using rule 131 (opciones_rep -> opciones_element_rep .)
+    RUTAC           reduce using rule 131 (opciones_rep -> opciones_element_rep .)
+    $end            reduce using rule 131 (opciones_rep -> opciones_element_rep .)
+
+
+state 115
+
+    (132) opciones_element_rep -> opcionrep_id .
+
+    ID_CMD          reduce using rule 132 (opciones_element_rep -> opcionrep_id .)
+    PATH            reduce using rule 132 (opciones_element_rep -> opcionrep_id .)
+    NAME            reduce using rule 132 (opciones_element_rep -> opcionrep_id .)
+    RUTAC           reduce using rule 132 (opciones_element_rep -> opcionrep_id .)
+    $end            reduce using rule 132 (opciones_element_rep -> opcionrep_id .)
+
+
+state 116
+
+    (133) opciones_element_rep -> opcionrep_path .
+
+    ID_CMD          reduce using rule 133 (opciones_element_rep -> opcionrep_path .)
+    PATH            reduce using rule 133 (opciones_element_rep -> opcionrep_path .)
+    NAME            reduce using rule 133 (opciones_element_rep -> opcionrep_path .)
+    RUTAC           reduce using rule 133 (opciones_element_rep -> opcionrep_path .)
+    $end            reduce using rule 133 (opciones_element_rep -> opcionrep_path .)
+
+
+state 117
+
+    (134) opciones_element_rep -> opcionrep_name .
+
+    ID_CMD          reduce using rule 134 (opciones_element_rep -> opcionrep_name .)
+    PATH            reduce using rule 134 (opciones_element_rep -> opcionrep_name .)
+    NAME            reduce using rule 134 (opciones_element_rep -> opcionrep_name .)
+    RUTAC           reduce using rule 134 (opciones_element_rep -> opcionrep_name .)
+    $end            reduce using rule 134 (opciones_element_rep -> opcionrep_name .)
+
+
+state 118
+
+    (135) opciones_element_rep -> opcionrep_ruta .
+
+    ID_CMD          reduce using rule 135 (opciones_element_rep -> opcionrep_ruta .)
+    PATH            reduce using rule 135 (opciones_element_rep -> opcionrep_ruta .)
+    NAME            reduce using rule 135 (opciones_element_rep -> opcionrep_ruta .)
+    RUTAC           reduce using rule 135 (opciones_element_rep -> opcionrep_ruta .)
+    $end            reduce using rule 135 (opciones_element_rep -> opcionrep_ruta .)
+
+
+state 119
+
+    (136) opcionrep_id -> ID_CMD . IGUAL NUMERO ID
+
+    IGUAL           shift and go to state 164
+
+
+state 120
+
+    (137) opcionrep_path -> PATH . IGUAL RUTA ID
+    (138) opcionrep_path -> PATH . IGUAL RUTA
+    (139) opcionrep_path -> PATH . IGUAL CADENA
+
+    IGUAL           shift and go to state 165
+
+
+state 121
+
+    (140) opcionrep_name -> NAME . IGUAL ID
+    (141) opcionrep_name -> NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 166
+
+
+state 122
+
+    (142) opcionrep_ruta -> RUTAC . IGUAL RUTA ID
+    (143) opcionrep_ruta -> RUTAC . IGUAL RUTA
+    (144) opcionrep_ruta -> RUTAC . IGUAL CADENA
+
+    IGUAL           shift and go to state 167
+
+
+state 123
+
+    (29) execute_command -> EXECUTE PATH IGUAL . RUTA ID
+    (30) execute_command -> EXECUTE PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 168
+    CADENA          shift and go to state 169
+
+
+state 124
+
+    (18) opciones -> opciones opciones_element .
+
+    SIZE            reduce using rule 18 (opciones -> opciones opciones_element .)
+    PATH            reduce using rule 18 (opciones -> opciones opciones_element .)
+    UNIT            reduce using rule 18 (opciones -> opciones opciones_element .)
+    FIT             reduce using rule 18 (opciones -> opciones opciones_element .)
+    $end            reduce using rule 18 (opciones -> opciones opciones_element .)
+
+
+state 125
+
+    (24) opcion_size -> SIZE IGUAL . NUMERO
+
+    NUMERO          shift and go to state 170
+
+
+state 126
+
+    (25) opcion_path -> PATH IGUAL . RUTA ID
+    (26) opcion_path -> PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 171
+    CADENA          shift and go to state 172
+
+
+state 127
+
+    (27) opcion_unit -> UNIT IGUAL . ID
+
+    ID              shift and go to state 173
+
+
+state 128
+
+    (28) opcion_fit -> FIT IGUAL . ID
+
+    ID              shift and go to state 174
+
+
+state 129
+
+    (31) rmdisk_command -> RMDISK PATH IGUAL . RUTA ID
+    (32) rmdisk_command -> RMDISK PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 175
+    CADENA          shift and go to state 176
+
+
+state 130
+
+    (34) opciones_fdisk -> opciones_fdisk opciones_element_fdisk .
+
+    SIZE            reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    PATH            reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    NAME            reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    UNIT            reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    TYPE            reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    FIT             reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    DELETE          reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    ADD             reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+    $end            reduce using rule 34 (opciones_fdisk -> opciones_fdisk opciones_element_fdisk .)
+
+
+state 131
+
+    (44) opcionfdisk_size -> SIZE IGUAL . NUMERO
+
+    NUMERO          shift and go to state 177
+
+
+state 132
+
+    (45) opcionfdisk_path -> PATH IGUAL . RUTA ID
+    (46) opcionfdisk_path -> PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 178
+    CADENA          shift and go to state 179
+
+
+state 133
+
+    (47) opcionfdisk_name -> NAME IGUAL . ID
+    (48) opcionfdisk_name -> NAME IGUAL . CADENA
+
+    ID              shift and go to state 180
+    CADENA          shift and go to state 181
+
+
+state 134
+
+    (49) opcionfdisk_unit -> UNIT IGUAL . ID
+
+    ID              shift and go to state 182
+
+
+state 135
+
+    (50) opcionfdisk_type -> TYPE IGUAL . ID
+
+    ID              shift and go to state 183
+
+
+state 136
+
+    (51) opcionfdisk_fit -> FIT IGUAL . ID
+
+    ID              shift and go to state 184
+
+
+state 137
+
+    (52) opcionfdisk_delete -> DELETE IGUAL . ID
+
+    ID              shift and go to state 185
+
+
+state 138
+
+    (53) opcionfdisk_add -> ADD IGUAL . NUMERO
+    (54) opcionfdisk_add -> ADD IGUAL . ID
+
+    NUMERO          shift and go to state 186
+    ID              shift and go to state 187
+
+
+state 139
+
+    (56) opciones_mount -> opciones_mount opciones_element_mount .
+
+    PATH            reduce using rule 56 (opciones_mount -> opciones_mount opciones_element_mount .)
+    NAME            reduce using rule 56 (opciones_mount -> opciones_mount opciones_element_mount .)
+    $end            reduce using rule 56 (opciones_mount -> opciones_mount opciones_element_mount .)
+
+
+state 140
+
+    (60) opcionmount_path -> PATH IGUAL . RUTA ID
+    (61) opcionmount_path -> PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 188
+    CADENA          shift and go to state 189
+
+
+state 141
+
+    (62) opcionmount_name -> NAME IGUAL . ID
+    (63) opcionmount_name -> NAME IGUAL . CADENA
+
+    ID              shift and go to state 190
+    CADENA          shift and go to state 191
+
+
+state 142
+
+    (65) opciones_mkfs -> opciones_mkfs opciones_element_mkfs .
+
+    ID_CMD          reduce using rule 65 (opciones_mkfs -> opciones_mkfs opciones_element_mkfs .)
+    TYPE            reduce using rule 65 (opciones_mkfs -> opciones_mkfs opciones_element_mkfs .)
+    FS              reduce using rule 65 (opciones_mkfs -> opciones_mkfs opciones_element_mkfs .)
+    $end            reduce using rule 65 (opciones_mkfs -> opciones_mkfs opciones_element_mkfs .)
+
+
+state 143
+
+    (70) opcionmkfs_id -> ID_CMD IGUAL . NUMERO ID
+
+    NUMERO          shift and go to state 192
+
+
+state 144
+
+    (71) opcionmkfs_type -> TYPE IGUAL . ID
+
+    ID              shift and go to state 193
+
+
+state 145
+
+    (72) opcionmkfs_fs -> FS IGUAL . NUMERO ID
+
+    NUMERO          shift and go to state 194
+
+
+state 146
+
+    (74) opciones_login -> opciones_login opciones_element_login .
+
+    USER            reduce using rule 74 (opciones_login -> opciones_login opciones_element_login .)
+    PASS            reduce using rule 74 (opciones_login -> opciones_login opciones_element_login .)
+    ID_CMD          reduce using rule 74 (opciones_login -> opciones_login opciones_element_login .)
+    $end            reduce using rule 74 (opciones_login -> opciones_login opciones_element_login .)
+
+
+state 147
+
+    (79) opcionlogin_usr -> USER IGUAL . ID
+    (80) opcionlogin_usr -> USER IGUAL . CADENA
+
+    ID              shift and go to state 195
+    CADENA          shift and go to state 196
+
+
+state 148
+
+    (81) opcionlogin_pwd -> PASS IGUAL . ID
+    (82) opcionlogin_pwd -> PASS IGUAL . NUMERO
+    (83) opcionlogin_pwd -> PASS IGUAL . CADENA
+    (84) opcionlogin_pwd -> PASS IGUAL . NUMERO ID
+
+    ID              shift and go to state 197
+    NUMERO          shift and go to state 198
+    CADENA          shift and go to state 199
+
+
+state 149
+
+    (85) opcionlogin_id -> ID_CMD IGUAL . NUMERO ID
+
+    NUMERO          shift and go to state 200
+
+
+state 150
+
+    (87) mkgrp_command -> MKGRP NAME IGUAL . ID
+    (88) mkgrp_command -> MKGRP NAME IGUAL . CADENA
+
+    ID              shift and go to state 201
+    CADENA          shift and go to state 202
+
+
+state 151
+
+    (89) rmgrp_command -> RMGRP NAME IGUAL . ID
+    (90) rmgrp_command -> RMGRP NAME IGUAL . CADENA
+
+    ID              shift and go to state 203
+    CADENA          shift and go to state 204
+
+
+state 152
+
+    (92) opciones_mkusr -> opciones_mkusr opciones_element_mkusr .
+
+    USER            reduce using rule 92 (opciones_mkusr -> opciones_mkusr opciones_element_mkusr .)
+    PASS            reduce using rule 92 (opciones_mkusr -> opciones_mkusr opciones_element_mkusr .)
+    GRP             reduce using rule 92 (opciones_mkusr -> opciones_mkusr opciones_element_mkusr .)
+    $end            reduce using rule 92 (opciones_mkusr -> opciones_mkusr opciones_element_mkusr .)
+
+
+state 153
+
+    (97) opcionmkusr_usr -> USER IGUAL . ID
+    (98) opcionmkusr_usr -> USER IGUAL . CADENA
+
+    ID              shift and go to state 205
+    CADENA          shift and go to state 206
+
+
+state 154
+
+    (99) opcionmkusr_pwd -> PASS IGUAL . ID
+    (100) opcionmkusr_pwd -> PASS IGUAL . NUMERO
+    (101) opcionmkusr_pwd -> PASS IGUAL . CADENA
+    (102) opcionmkusr_pwd -> PASS IGUAL . NUMERO ID
+
+    ID              shift and go to state 207
+    NUMERO          shift and go to state 208
+    CADENA          shift and go to state 209
+
+
+state 155
+
+    (103) opcionmkusr_grp -> GRP IGUAL . ID
+    (104) opcionmkusr_grp -> GRP IGUAL . CADENA
+
+    ID              shift and go to state 210
+    CADENA          shift and go to state 211
+
+
+state 156
+
+    (105) rmusr_command -> RMUSR USER IGUAL . ID
+    (106) rmusr_command -> RMUSR USER IGUAL . CADENA
+
+    ID              shift and go to state 212
+    CADENA          shift and go to state 213
+
+
+state 157
+
+    (108) opciones_mkfile -> opciones_mkfile opciones_element_mkfile .
+
+    PATH            reduce using rule 108 (opciones_mkfile -> opciones_mkfile opciones_element_mkfile .)
+    R               reduce using rule 108 (opciones_mkfile -> opciones_mkfile opciones_element_mkfile .)
+    SIZE            reduce using rule 108 (opciones_mkfile -> opciones_mkfile opciones_element_mkfile .)
+    CONT            reduce using rule 108 (opciones_mkfile -> opciones_mkfile opciones_element_mkfile .)
+    $end            reduce using rule 108 (opciones_mkfile -> opciones_mkfile opciones_element_mkfile .)
+
+
+state 158
+
+    (114) opcionmkfile_path -> PATH IGUAL . RUTA ID
+    (115) opcionmkfile_path -> PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 214
+    CADENA          shift and go to state 215
+
+
+state 159
+
+    (117) opcionmkfile_size -> SIZE IGUAL . NUMERO
+
+    NUMERO          shift and go to state 216
+
+
+state 160
+
+    (118) opcionmkfile_cont -> CONT IGUAL . CADENA
+    (119) opcionmkfile_cont -> CONT IGUAL . RUTA ID
+
+    CADENA          shift and go to state 217
+    RUTA            shift and go to state 218
+
+
+state 161
+
+    (121) opciones_mkdir -> opciones_mkdir opciones_element_mkdir .
+
+    PATH            reduce using rule 121 (opciones_mkdir -> opciones_mkdir opciones_element_mkdir .)
+    R               reduce using rule 121 (opciones_mkdir -> opciones_mkdir opciones_element_mkdir .)
+    $end            reduce using rule 121 (opciones_mkdir -> opciones_mkdir opciones_element_mkdir .)
+
+
+state 162
+
+    (125) opcionmkdir_path -> PATH IGUAL . RUTA
+    (126) opcionmkdir_path -> PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 219
+    CADENA          shift and go to state 220
+
+
+state 163
+
+    (130) opciones_rep -> opciones_rep opciones_element_rep .
+
+    ID_CMD          reduce using rule 130 (opciones_rep -> opciones_rep opciones_element_rep .)
+    PATH            reduce using rule 130 (opciones_rep -> opciones_rep opciones_element_rep .)
+    NAME            reduce using rule 130 (opciones_rep -> opciones_rep opciones_element_rep .)
+    RUTAC           reduce using rule 130 (opciones_rep -> opciones_rep opciones_element_rep .)
+    $end            reduce using rule 130 (opciones_rep -> opciones_rep opciones_element_rep .)
+
+
+state 164
+
+    (136) opcionrep_id -> ID_CMD IGUAL . NUMERO ID
+
+    NUMERO          shift and go to state 221
+
+
+state 165
+
+    (137) opcionrep_path -> PATH IGUAL . RUTA ID
+    (138) opcionrep_path -> PATH IGUAL . RUTA
+    (139) opcionrep_path -> PATH IGUAL . CADENA
+
+    RUTA            shift and go to state 222
+    CADENA          shift and go to state 223
+
+
+state 166
+
+    (140) opcionrep_name -> NAME IGUAL . ID
+    (141) opcionrep_name -> NAME IGUAL . CADENA
+
+    ID              shift and go to state 224
+    CADENA          shift and go to state 225
+
+
+state 167
+
+    (142) opcionrep_ruta -> RUTAC IGUAL . RUTA ID
+    (143) opcionrep_ruta -> RUTAC IGUAL . RUTA
+    (144) opcionrep_ruta -> RUTAC IGUAL . CADENA
+
+    RUTA            shift and go to state 226
+    CADENA          shift and go to state 227
+
+
+state 168
+
+    (29) execute_command -> EXECUTE PATH IGUAL RUTA . ID
+
+    ID              shift and go to state 228
+
+
+state 169
+
+    (30) execute_command -> EXECUTE PATH IGUAL CADENA .
+
+    $end            reduce using rule 30 (execute_command -> EXECUTE PATH IGUAL CADENA .)
+
+
+state 170
+
+    (24) opcion_size -> SIZE IGUAL NUMERO .
+
+    SIZE            reduce using rule 24 (opcion_size -> SIZE IGUAL NUMERO .)
+    PATH            reduce using rule 24 (opcion_size -> SIZE IGUAL NUMERO .)
+    UNIT            reduce using rule 24 (opcion_size -> SIZE IGUAL NUMERO .)
+    FIT             reduce using rule 24 (opcion_size -> SIZE IGUAL NUMERO .)
+    $end            reduce using rule 24 (opcion_size -> SIZE IGUAL NUMERO .)
+
+
+state 171
+
+    (25) opcion_path -> PATH IGUAL RUTA . ID
+
+    ID              shift and go to state 229
+
+
+state 172
+
+    (26) opcion_path -> PATH IGUAL CADENA .
+
+    SIZE            reduce using rule 26 (opcion_path -> PATH IGUAL CADENA .)
+    PATH            reduce using rule 26 (opcion_path -> PATH IGUAL CADENA .)
+    UNIT            reduce using rule 26 (opcion_path -> PATH IGUAL CADENA .)
+    FIT             reduce using rule 26 (opcion_path -> PATH IGUAL CADENA .)
+    $end            reduce using rule 26 (opcion_path -> PATH IGUAL CADENA .)
+
+
+state 173
+
+    (27) opcion_unit -> UNIT IGUAL ID .
+
+    SIZE            reduce using rule 27 (opcion_unit -> UNIT IGUAL ID .)
+    PATH            reduce using rule 27 (opcion_unit -> UNIT IGUAL ID .)
+    UNIT            reduce using rule 27 (opcion_unit -> UNIT IGUAL ID .)
+    FIT             reduce using rule 27 (opcion_unit -> UNIT IGUAL ID .)
+    $end            reduce using rule 27 (opcion_unit -> UNIT IGUAL ID .)
+
+
+state 174
+
+    (28) opcion_fit -> FIT IGUAL ID .
+
+    SIZE            reduce using rule 28 (opcion_fit -> FIT IGUAL ID .)
+    PATH            reduce using rule 28 (opcion_fit -> FIT IGUAL ID .)
+    UNIT            reduce using rule 28 (opcion_fit -> FIT IGUAL ID .)
+    FIT             reduce using rule 28 (opcion_fit -> FIT IGUAL ID .)
+    $end            reduce using rule 28 (opcion_fit -> FIT IGUAL ID .)
+
+
+state 175
+
+    (31) rmdisk_command -> RMDISK PATH IGUAL RUTA . ID
+
+    ID              shift and go to state 230
+
+
+state 176
+
+    (32) rmdisk_command -> RMDISK PATH IGUAL CADENA .
+
+    $end            reduce using rule 32 (rmdisk_command -> RMDISK PATH IGUAL CADENA .)
+
+
+state 177
+
+    (44) opcionfdisk_size -> SIZE IGUAL NUMERO .
+
+    SIZE            reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    PATH            reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    NAME            reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    UNIT            reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    TYPE            reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    FIT             reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    DELETE          reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    ADD             reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+    $end            reduce using rule 44 (opcionfdisk_size -> SIZE IGUAL NUMERO .)
+
+
+state 178
+
+    (45) opcionfdisk_path -> PATH IGUAL RUTA . ID
+
+    ID              shift and go to state 231
+
+
+state 179
+
+    (46) opcionfdisk_path -> PATH IGUAL CADENA .
+
+    SIZE            reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    PATH            reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    NAME            reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    UNIT            reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    TYPE            reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    FIT             reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    DELETE          reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    ADD             reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+    $end            reduce using rule 46 (opcionfdisk_path -> PATH IGUAL CADENA .)
+
+
+state 180
+
+    (47) opcionfdisk_name -> NAME IGUAL ID .
+
+    SIZE            reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    PATH            reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    NAME            reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    UNIT            reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    TYPE            reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    FIT             reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    DELETE          reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    ADD             reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+    $end            reduce using rule 47 (opcionfdisk_name -> NAME IGUAL ID .)
+
+
+state 181
+
+    (48) opcionfdisk_name -> NAME IGUAL CADENA .
+
+    SIZE            reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    PATH            reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    NAME            reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    UNIT            reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    TYPE            reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    FIT             reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    DELETE          reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    ADD             reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+    $end            reduce using rule 48 (opcionfdisk_name -> NAME IGUAL CADENA .)
+
+
+state 182
+
+    (49) opcionfdisk_unit -> UNIT IGUAL ID .
+
+    SIZE            reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    PATH            reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    NAME            reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    UNIT            reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    TYPE            reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    FIT             reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    DELETE          reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    ADD             reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+    $end            reduce using rule 49 (opcionfdisk_unit -> UNIT IGUAL ID .)
+
+
+state 183
+
+    (50) opcionfdisk_type -> TYPE IGUAL ID .
+
+    SIZE            reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    PATH            reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    NAME            reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    UNIT            reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    TYPE            reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    FIT             reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    DELETE          reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    ADD             reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+    $end            reduce using rule 50 (opcionfdisk_type -> TYPE IGUAL ID .)
+
+
+state 184
+
+    (51) opcionfdisk_fit -> FIT IGUAL ID .
+
+    SIZE            reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    PATH            reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    NAME            reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    UNIT            reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    TYPE            reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    FIT             reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    DELETE          reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    ADD             reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+    $end            reduce using rule 51 (opcionfdisk_fit -> FIT IGUAL ID .)
+
+
+state 185
+
+    (52) opcionfdisk_delete -> DELETE IGUAL ID .
+
+    SIZE            reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    PATH            reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    NAME            reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    UNIT            reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    TYPE            reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    FIT             reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    DELETE          reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    ADD             reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+    $end            reduce using rule 52 (opcionfdisk_delete -> DELETE IGUAL ID .)
+
+
+state 186
+
+    (53) opcionfdisk_add -> ADD IGUAL NUMERO .
+
+    SIZE            reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    PATH            reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    NAME            reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    UNIT            reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    TYPE            reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    FIT             reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    DELETE          reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    ADD             reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+    $end            reduce using rule 53 (opcionfdisk_add -> ADD IGUAL NUMERO .)
+
+
+state 187
+
+    (54) opcionfdisk_add -> ADD IGUAL ID .
+
+    SIZE            reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    PATH            reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    NAME            reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    UNIT            reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    TYPE            reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    FIT             reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    DELETE          reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    ADD             reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+    $end            reduce using rule 54 (opcionfdisk_add -> ADD IGUAL ID .)
+
+
+state 188
+
+    (60) opcionmount_path -> PATH IGUAL RUTA . ID
+
+    ID              shift and go to state 232
+
+
+state 189
+
+    (61) opcionmount_path -> PATH IGUAL CADENA .
+
+    PATH            reduce using rule 61 (opcionmount_path -> PATH IGUAL CADENA .)
+    NAME            reduce using rule 61 (opcionmount_path -> PATH IGUAL CADENA .)
+    $end            reduce using rule 61 (opcionmount_path -> PATH IGUAL CADENA .)
+
+
+state 190
+
+    (62) opcionmount_name -> NAME IGUAL ID .
+
+    PATH            reduce using rule 62 (opcionmount_name -> NAME IGUAL ID .)
+    NAME            reduce using rule 62 (opcionmount_name -> NAME IGUAL ID .)
+    $end            reduce using rule 62 (opcionmount_name -> NAME IGUAL ID .)
+
+
+state 191
+
+    (63) opcionmount_name -> NAME IGUAL CADENA .
+
+    PATH            reduce using rule 63 (opcionmount_name -> NAME IGUAL CADENA .)
+    NAME            reduce using rule 63 (opcionmount_name -> NAME IGUAL CADENA .)
+    $end            reduce using rule 63 (opcionmount_name -> NAME IGUAL CADENA .)
+
+
+state 192
+
+    (70) opcionmkfs_id -> ID_CMD IGUAL NUMERO . ID
+
+    ID              shift and go to state 233
+
+
+state 193
+
+    (71) opcionmkfs_type -> TYPE IGUAL ID .
+
+    ID_CMD          reduce using rule 71 (opcionmkfs_type -> TYPE IGUAL ID .)
+    TYPE            reduce using rule 71 (opcionmkfs_type -> TYPE IGUAL ID .)
+    FS              reduce using rule 71 (opcionmkfs_type -> TYPE IGUAL ID .)
+    $end            reduce using rule 71 (opcionmkfs_type -> TYPE IGUAL ID .)
+
+
+state 194
+
+    (72) opcionmkfs_fs -> FS IGUAL NUMERO . ID
+
+    ID              shift and go to state 234
+
+
+state 195
+
+    (79) opcionlogin_usr -> USER IGUAL ID .
+
+    USER            reduce using rule 79 (opcionlogin_usr -> USER IGUAL ID .)
+    PASS            reduce using rule 79 (opcionlogin_usr -> USER IGUAL ID .)
+    ID_CMD          reduce using rule 79 (opcionlogin_usr -> USER IGUAL ID .)
+    $end            reduce using rule 79 (opcionlogin_usr -> USER IGUAL ID .)
+
+
+state 196
+
+    (80) opcionlogin_usr -> USER IGUAL CADENA .
+
+    USER            reduce using rule 80 (opcionlogin_usr -> USER IGUAL CADENA .)
+    PASS            reduce using rule 80 (opcionlogin_usr -> USER IGUAL CADENA .)
+    ID_CMD          reduce using rule 80 (opcionlogin_usr -> USER IGUAL CADENA .)
+    $end            reduce using rule 80 (opcionlogin_usr -> USER IGUAL CADENA .)
+
+
+state 197
+
+    (81) opcionlogin_pwd -> PASS IGUAL ID .
+
+    USER            reduce using rule 81 (opcionlogin_pwd -> PASS IGUAL ID .)
+    PASS            reduce using rule 81 (opcionlogin_pwd -> PASS IGUAL ID .)
+    ID_CMD          reduce using rule 81 (opcionlogin_pwd -> PASS IGUAL ID .)
+    $end            reduce using rule 81 (opcionlogin_pwd -> PASS IGUAL ID .)
+
+
+state 198
+
+    (82) opcionlogin_pwd -> PASS IGUAL NUMERO .
+    (84) opcionlogin_pwd -> PASS IGUAL NUMERO . ID
+
+    USER            reduce using rule 82 (opcionlogin_pwd -> PASS IGUAL NUMERO .)
+    PASS            reduce using rule 82 (opcionlogin_pwd -> PASS IGUAL NUMERO .)
+    ID_CMD          reduce using rule 82 (opcionlogin_pwd -> PASS IGUAL NUMERO .)
+    $end            reduce using rule 82 (opcionlogin_pwd -> PASS IGUAL NUMERO .)
+    ID              shift and go to state 235
+
+
+state 199
+
+    (83) opcionlogin_pwd -> PASS IGUAL CADENA .
+
+    USER            reduce using rule 83 (opcionlogin_pwd -> PASS IGUAL CADENA .)
+    PASS            reduce using rule 83 (opcionlogin_pwd -> PASS IGUAL CADENA .)
+    ID_CMD          reduce using rule 83 (opcionlogin_pwd -> PASS IGUAL CADENA .)
+    $end            reduce using rule 83 (opcionlogin_pwd -> PASS IGUAL CADENA .)
+
+
+state 200
+
+    (85) opcionlogin_id -> ID_CMD IGUAL NUMERO . ID
+
+    ID              shift and go to state 236
+
+
+state 201
+
+    (87) mkgrp_command -> MKGRP NAME IGUAL ID .
+
+    $end            reduce using rule 87 (mkgrp_command -> MKGRP NAME IGUAL ID .)
+
+
+state 202
+
+    (88) mkgrp_command -> MKGRP NAME IGUAL CADENA .
+
+    $end            reduce using rule 88 (mkgrp_command -> MKGRP NAME IGUAL CADENA .)
+
+
+state 203
+
+    (89) rmgrp_command -> RMGRP NAME IGUAL ID .
+
+    $end            reduce using rule 89 (rmgrp_command -> RMGRP NAME IGUAL ID .)
+
+
+state 204
+
+    (90) rmgrp_command -> RMGRP NAME IGUAL CADENA .
+
+    $end            reduce using rule 90 (rmgrp_command -> RMGRP NAME IGUAL CADENA .)
+
+
+state 205
+
+    (97) opcionmkusr_usr -> USER IGUAL ID .
+
+    USER            reduce using rule 97 (opcionmkusr_usr -> USER IGUAL ID .)
+    PASS            reduce using rule 97 (opcionmkusr_usr -> USER IGUAL ID .)
+    GRP             reduce using rule 97 (opcionmkusr_usr -> USER IGUAL ID .)
+    $end            reduce using rule 97 (opcionmkusr_usr -> USER IGUAL ID .)
+
+
+state 206
+
+    (98) opcionmkusr_usr -> USER IGUAL CADENA .
+
+    USER            reduce using rule 98 (opcionmkusr_usr -> USER IGUAL CADENA .)
+    PASS            reduce using rule 98 (opcionmkusr_usr -> USER IGUAL CADENA .)
+    GRP             reduce using rule 98 (opcionmkusr_usr -> USER IGUAL CADENA .)
+    $end            reduce using rule 98 (opcionmkusr_usr -> USER IGUAL CADENA .)
+
+
+state 207
+
+    (99) opcionmkusr_pwd -> PASS IGUAL ID .
+
+    USER            reduce using rule 99 (opcionmkusr_pwd -> PASS IGUAL ID .)
+    PASS            reduce using rule 99 (opcionmkusr_pwd -> PASS IGUAL ID .)
+    GRP             reduce using rule 99 (opcionmkusr_pwd -> PASS IGUAL ID .)
+    $end            reduce using rule 99 (opcionmkusr_pwd -> PASS IGUAL ID .)
+
+
+state 208
+
+    (100) opcionmkusr_pwd -> PASS IGUAL NUMERO .
+    (102) opcionmkusr_pwd -> PASS IGUAL NUMERO . ID
+
+    USER            reduce using rule 100 (opcionmkusr_pwd -> PASS IGUAL NUMERO .)
+    PASS            reduce using rule 100 (opcionmkusr_pwd -> PASS IGUAL NUMERO .)
+    GRP             reduce using rule 100 (opcionmkusr_pwd -> PASS IGUAL NUMERO .)
+    $end            reduce using rule 100 (opcionmkusr_pwd -> PASS IGUAL NUMERO .)
+    ID              shift and go to state 237
+
+
+state 209
+
+    (101) opcionmkusr_pwd -> PASS IGUAL CADENA .
+
+    USER            reduce using rule 101 (opcionmkusr_pwd -> PASS IGUAL CADENA .)
+    PASS            reduce using rule 101 (opcionmkusr_pwd -> PASS IGUAL CADENA .)
+    GRP             reduce using rule 101 (opcionmkusr_pwd -> PASS IGUAL CADENA .)
+    $end            reduce using rule 101 (opcionmkusr_pwd -> PASS IGUAL CADENA .)
+
+
+state 210
+
+    (103) opcionmkusr_grp -> GRP IGUAL ID .
+
+    USER            reduce using rule 103 (opcionmkusr_grp -> GRP IGUAL ID .)
+    PASS            reduce using rule 103 (opcionmkusr_grp -> GRP IGUAL ID .)
+    GRP             reduce using rule 103 (opcionmkusr_grp -> GRP IGUAL ID .)
+    $end            reduce using rule 103 (opcionmkusr_grp -> GRP IGUAL ID .)
+
+
+state 211
+
+    (104) opcionmkusr_grp -> GRP IGUAL CADENA .
+
+    USER            reduce using rule 104 (opcionmkusr_grp -> GRP IGUAL CADENA .)
+    PASS            reduce using rule 104 (opcionmkusr_grp -> GRP IGUAL CADENA .)
+    GRP             reduce using rule 104 (opcionmkusr_grp -> GRP IGUAL CADENA .)
+    $end            reduce using rule 104 (opcionmkusr_grp -> GRP IGUAL CADENA .)
+
+
+state 212
+
+    (105) rmusr_command -> RMUSR USER IGUAL ID .
+
+    $end            reduce using rule 105 (rmusr_command -> RMUSR USER IGUAL ID .)
+
+
+state 213
+
+    (106) rmusr_command -> RMUSR USER IGUAL CADENA .
+
+    $end            reduce using rule 106 (rmusr_command -> RMUSR USER IGUAL CADENA .)
+
+
+state 214
+
+    (114) opcionmkfile_path -> PATH IGUAL RUTA . ID
+
+    ID              shift and go to state 238
+
+
+state 215
+
+    (115) opcionmkfile_path -> PATH IGUAL CADENA .
+
+    PATH            reduce using rule 115 (opcionmkfile_path -> PATH IGUAL CADENA .)
+    R               reduce using rule 115 (opcionmkfile_path -> PATH IGUAL CADENA .)
+    SIZE            reduce using rule 115 (opcionmkfile_path -> PATH IGUAL CADENA .)
+    CONT            reduce using rule 115 (opcionmkfile_path -> PATH IGUAL CADENA .)
+    $end            reduce using rule 115 (opcionmkfile_path -> PATH IGUAL CADENA .)
+
+
+state 216
+
+    (117) opcionmkfile_size -> SIZE IGUAL NUMERO .
+
+    PATH            reduce using rule 117 (opcionmkfile_size -> SIZE IGUAL NUMERO .)
+    R               reduce using rule 117 (opcionmkfile_size -> SIZE IGUAL NUMERO .)
+    SIZE            reduce using rule 117 (opcionmkfile_size -> SIZE IGUAL NUMERO .)
+    CONT            reduce using rule 117 (opcionmkfile_size -> SIZE IGUAL NUMERO .)
+    $end            reduce using rule 117 (opcionmkfile_size -> SIZE IGUAL NUMERO .)
+
+
+state 217
+
+    (118) opcionmkfile_cont -> CONT IGUAL CADENA .
+
+    PATH            reduce using rule 118 (opcionmkfile_cont -> CONT IGUAL CADENA .)
+    R               reduce using rule 118 (opcionmkfile_cont -> CONT IGUAL CADENA .)
+    SIZE            reduce using rule 118 (opcionmkfile_cont -> CONT IGUAL CADENA .)
+    CONT            reduce using rule 118 (opcionmkfile_cont -> CONT IGUAL CADENA .)
+    $end            reduce using rule 118 (opcionmkfile_cont -> CONT IGUAL CADENA .)
+
+
+state 218
+
+    (119) opcionmkfile_cont -> CONT IGUAL RUTA . ID
+
+    ID              shift and go to state 239
+
+
+state 219
+
+    (125) opcionmkdir_path -> PATH IGUAL RUTA .
+
+    PATH            reduce using rule 125 (opcionmkdir_path -> PATH IGUAL RUTA .)
+    R               reduce using rule 125 (opcionmkdir_path -> PATH IGUAL RUTA .)
+    $end            reduce using rule 125 (opcionmkdir_path -> PATH IGUAL RUTA .)
+
+
+state 220
+
+    (126) opcionmkdir_path -> PATH IGUAL CADENA .
+
+    PATH            reduce using rule 126 (opcionmkdir_path -> PATH IGUAL CADENA .)
+    R               reduce using rule 126 (opcionmkdir_path -> PATH IGUAL CADENA .)
+    $end            reduce using rule 126 (opcionmkdir_path -> PATH IGUAL CADENA .)
+
+
+state 221
+
+    (136) opcionrep_id -> ID_CMD IGUAL NUMERO . ID
+
+    ID              shift and go to state 240
+
+
+state 222
+
+    (137) opcionrep_path -> PATH IGUAL RUTA . ID
+    (138) opcionrep_path -> PATH IGUAL RUTA .
+
+    ID              shift and go to state 241
+    ID_CMD          reduce using rule 138 (opcionrep_path -> PATH IGUAL RUTA .)
+    PATH            reduce using rule 138 (opcionrep_path -> PATH IGUAL RUTA .)
+    NAME            reduce using rule 138 (opcionrep_path -> PATH IGUAL RUTA .)
+    RUTAC           reduce using rule 138 (opcionrep_path -> PATH IGUAL RUTA .)
+    $end            reduce using rule 138 (opcionrep_path -> PATH IGUAL RUTA .)
+
+
+state 223
+
+    (139) opcionrep_path -> PATH IGUAL CADENA .
+
+    ID_CMD          reduce using rule 139 (opcionrep_path -> PATH IGUAL CADENA .)
+    PATH            reduce using rule 139 (opcionrep_path -> PATH IGUAL CADENA .)
+    NAME            reduce using rule 139 (opcionrep_path -> PATH IGUAL CADENA .)
+    RUTAC           reduce using rule 139 (opcionrep_path -> PATH IGUAL CADENA .)
+    $end            reduce using rule 139 (opcionrep_path -> PATH IGUAL CADENA .)
+
+
+state 224
+
+    (140) opcionrep_name -> NAME IGUAL ID .
+
+    ID_CMD          reduce using rule 140 (opcionrep_name -> NAME IGUAL ID .)
+    PATH            reduce using rule 140 (opcionrep_name -> NAME IGUAL ID .)
+    NAME            reduce using rule 140 (opcionrep_name -> NAME IGUAL ID .)
+    RUTAC           reduce using rule 140 (opcionrep_name -> NAME IGUAL ID .)
+    $end            reduce using rule 140 (opcionrep_name -> NAME IGUAL ID .)
+
+
+state 225
+
+    (141) opcionrep_name -> NAME IGUAL CADENA .
+
+    ID_CMD          reduce using rule 141 (opcionrep_name -> NAME IGUAL CADENA .)
+    PATH            reduce using rule 141 (opcionrep_name -> NAME IGUAL CADENA .)
+    NAME            reduce using rule 141 (opcionrep_name -> NAME IGUAL CADENA .)
+    RUTAC           reduce using rule 141 (opcionrep_name -> NAME IGUAL CADENA .)
+    $end            reduce using rule 141 (opcionrep_name -> NAME IGUAL CADENA .)
+
+
+state 226
+
+    (142) opcionrep_ruta -> RUTAC IGUAL RUTA . ID
+    (143) opcionrep_ruta -> RUTAC IGUAL RUTA .
+
+    ID              shift and go to state 242
+    ID_CMD          reduce using rule 143 (opcionrep_ruta -> RUTAC IGUAL RUTA .)
+    PATH            reduce using rule 143 (opcionrep_ruta -> RUTAC IGUAL RUTA .)
+    NAME            reduce using rule 143 (opcionrep_ruta -> RUTAC IGUAL RUTA .)
+    RUTAC           reduce using rule 143 (opcionrep_ruta -> RUTAC IGUAL RUTA .)
+    $end            reduce using rule 143 (opcionrep_ruta -> RUTAC IGUAL RUTA .)
+
+
+state 227
+
+    (144) opcionrep_ruta -> RUTAC IGUAL CADENA .
+
+    ID_CMD          reduce using rule 144 (opcionrep_ruta -> RUTAC IGUAL CADENA .)
+    PATH            reduce using rule 144 (opcionrep_ruta -> RUTAC IGUAL CADENA .)
+    NAME            reduce using rule 144 (opcionrep_ruta -> RUTAC IGUAL CADENA .)
+    RUTAC           reduce using rule 144 (opcionrep_ruta -> RUTAC IGUAL CADENA .)
+    $end            reduce using rule 144 (opcionrep_ruta -> RUTAC IGUAL CADENA .)
+
+
+state 228
+
+    (29) execute_command -> EXECUTE PATH IGUAL RUTA ID .
+
+    $end            reduce using rule 29 (execute_command -> EXECUTE PATH IGUAL RUTA ID .)
+
+
+state 229
+
+    (25) opcion_path -> PATH IGUAL RUTA ID .
+
+    SIZE            reduce using rule 25 (opcion_path -> PATH IGUAL RUTA ID .)
+    PATH            reduce using rule 25 (opcion_path -> PATH IGUAL RUTA ID .)
+    UNIT            reduce using rule 25 (opcion_path -> PATH IGUAL RUTA ID .)
+    FIT             reduce using rule 25 (opcion_path -> PATH IGUAL RUTA ID .)
+    $end            reduce using rule 25 (opcion_path -> PATH IGUAL RUTA ID .)
+
+
+state 230
+
+    (31) rmdisk_command -> RMDISK PATH IGUAL RUTA ID .
+
+    $end            reduce using rule 31 (rmdisk_command -> RMDISK PATH IGUAL RUTA ID .)
+
+
+state 231
+
+    (45) opcionfdisk_path -> PATH IGUAL RUTA ID .
+
+    SIZE            reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    PATH            reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    NAME            reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    UNIT            reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    TYPE            reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    FIT             reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    DELETE          reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    ADD             reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+    $end            reduce using rule 45 (opcionfdisk_path -> PATH IGUAL RUTA ID .)
+
+
+state 232
+
+    (60) opcionmount_path -> PATH IGUAL RUTA ID .
+
+    PATH            reduce using rule 60 (opcionmount_path -> PATH IGUAL RUTA ID .)
+    NAME            reduce using rule 60 (opcionmount_path -> PATH IGUAL RUTA ID .)
+    $end            reduce using rule 60 (opcionmount_path -> PATH IGUAL RUTA ID .)
+
+
+state 233
+
+    (70) opcionmkfs_id -> ID_CMD IGUAL NUMERO ID .
+
+    ID_CMD          reduce using rule 70 (opcionmkfs_id -> ID_CMD IGUAL NUMERO ID .)
+    TYPE            reduce using rule 70 (opcionmkfs_id -> ID_CMD IGUAL NUMERO ID .)
+    FS              reduce using rule 70 (opcionmkfs_id -> ID_CMD IGUAL NUMERO ID .)
+    $end            reduce using rule 70 (opcionmkfs_id -> ID_CMD IGUAL NUMERO ID .)
+
+
+state 234
+
+    (72) opcionmkfs_fs -> FS IGUAL NUMERO ID .
+
+    ID_CMD          reduce using rule 72 (opcionmkfs_fs -> FS IGUAL NUMERO ID .)
+    TYPE            reduce using rule 72 (opcionmkfs_fs -> FS IGUAL NUMERO ID .)
+    FS              reduce using rule 72 (opcionmkfs_fs -> FS IGUAL NUMERO ID .)
+    $end            reduce using rule 72 (opcionmkfs_fs -> FS IGUAL NUMERO ID .)
+
+
+state 235
+
+    (84) opcionlogin_pwd -> PASS IGUAL NUMERO ID .
+
+    USER            reduce using rule 84 (opcionlogin_pwd -> PASS IGUAL NUMERO ID .)
+    PASS            reduce using rule 84 (opcionlogin_pwd -> PASS IGUAL NUMERO ID .)
+    ID_CMD          reduce using rule 84 (opcionlogin_pwd -> PASS IGUAL NUMERO ID .)
+    $end            reduce using rule 84 (opcionlogin_pwd -> PASS IGUAL NUMERO ID .)
+
+
+state 236
+
+    (85) opcionlogin_id -> ID_CMD IGUAL NUMERO ID .
+
+    USER            reduce using rule 85 (opcionlogin_id -> ID_CMD IGUAL NUMERO ID .)
+    PASS            reduce using rule 85 (opcionlogin_id -> ID_CMD IGUAL NUMERO ID .)
+    ID_CMD          reduce using rule 85 (opcionlogin_id -> ID_CMD IGUAL NUMERO ID .)
+    $end            reduce using rule 85 (opcionlogin_id -> ID_CMD IGUAL NUMERO ID .)
+
+
+state 237
+
+    (102) opcionmkusr_pwd -> PASS IGUAL NUMERO ID .
+
+    USER            reduce using rule 102 (opcionmkusr_pwd -> PASS IGUAL NUMERO ID .)
+    PASS            reduce using rule 102 (opcionmkusr_pwd -> PASS IGUAL NUMERO ID .)
+    GRP             reduce using rule 102 (opcionmkusr_pwd -> PASS IGUAL NUMERO ID .)
+    $end            reduce using rule 102 (opcionmkusr_pwd -> PASS IGUAL NUMERO ID .)
+
+
+state 238
+
+    (114) opcionmkfile_path -> PATH IGUAL RUTA ID .
+
+    PATH            reduce using rule 114 (opcionmkfile_path -> PATH IGUAL RUTA ID .)
+    R               reduce using rule 114 (opcionmkfile_path -> PATH IGUAL RUTA ID .)
+    SIZE            reduce using rule 114 (opcionmkfile_path -> PATH IGUAL RUTA ID .)
+    CONT            reduce using rule 114 (opcionmkfile_path -> PATH IGUAL RUTA ID .)
+    $end            reduce using rule 114 (opcionmkfile_path -> PATH IGUAL RUTA ID .)
+
+
+state 239
+
+    (119) opcionmkfile_cont -> CONT IGUAL RUTA ID .
+
+    PATH            reduce using rule 119 (opcionmkfile_cont -> CONT IGUAL RUTA ID .)
+    R               reduce using rule 119 (opcionmkfile_cont -> CONT IGUAL RUTA ID .)
+    SIZE            reduce using rule 119 (opcionmkfile_cont -> CONT IGUAL RUTA ID .)
+    CONT            reduce using rule 119 (opcionmkfile_cont -> CONT IGUAL RUTA ID .)
+    $end            reduce using rule 119 (opcionmkfile_cont -> CONT IGUAL RUTA ID .)
+
+
+state 240
+
+    (136) opcionrep_id -> ID_CMD IGUAL NUMERO ID .
+
+    ID_CMD          reduce using rule 136 (opcionrep_id -> ID_CMD IGUAL NUMERO ID .)
+    PATH            reduce using rule 136 (opcionrep_id -> ID_CMD IGUAL NUMERO ID .)
+    NAME            reduce using rule 136 (opcionrep_id -> ID_CMD IGUAL NUMERO ID .)
+    RUTAC           reduce using rule 136 (opcionrep_id -> ID_CMD IGUAL NUMERO ID .)
+    $end            reduce using rule 136 (opcionrep_id -> ID_CMD IGUAL NUMERO ID .)
+
+
+state 241
+
+    (137) opcionrep_path -> PATH IGUAL RUTA ID .
+
+    ID_CMD          reduce using rule 137 (opcionrep_path -> PATH IGUAL RUTA ID .)
+    PATH            reduce using rule 137 (opcionrep_path -> PATH IGUAL RUTA ID .)
+    NAME            reduce using rule 137 (opcionrep_path -> PATH IGUAL RUTA ID .)
+    RUTAC           reduce using rule 137 (opcionrep_path -> PATH IGUAL RUTA ID .)
+    $end            reduce using rule 137 (opcionrep_path -> PATH IGUAL RUTA ID .)
+
+
+state 242
+
+    (142) opcionrep_ruta -> RUTAC IGUAL RUTA ID .
+
+    ID_CMD          reduce using rule 142 (opcionrep_ruta -> RUTAC IGUAL RUTA ID .)
+    PATH            reduce using rule 142 (opcionrep_ruta -> RUTAC IGUAL RUTA ID .)
+    NAME            reduce using rule 142 (opcionrep_ruta -> RUTAC IGUAL RUTA ID .)
+    RUTAC           reduce using rule 142 (opcionrep_ruta -> RUTAC IGUAL RUTA ID .)
+    $end            reduce using rule 142 (opcionrep_ruta -> RUTAC IGUAL RUTA ID .)
+
